@@ -8,8 +8,8 @@
 * ### Open CV
 * ### YOLO
 *  ### AI PGM
- + numpy
- + pandas
- + mtplotlib
- + tensorflow
- + keras
+  + numpy
+  + pandas
+  + mtplotlib
+  + tensorflow
+  + keras
