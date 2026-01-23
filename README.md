@@ -7,7 +7,7 @@
 * ### Python
 * ### Open CV
 * ### YOLO
-* ### AI PGM
+*  ### AI PGM
  + numpy
  + pandas
  + mtplotlib
