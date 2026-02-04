@@ -1,0 +1,17 @@
+base = 10
+height=10
+
+area = base *height
+
+print(f"높이가 {height}이고 밑변이 {base}인 삼각형의 면적은 {area}입니다.")
+print("높이가", height, "이고 밑변이", base, "인 삼각형의 면적은", area, "입니다.")
+print("높이가 {}이고 밑변이 {}인 삼각형의 면적은 {}입니다.".format(height, base, area,))
+print("높이가 {0}이고 밑변이 {1}인 삼각형의 면적은 {2}입니다.".format(height, base, area))
+print("높이가 %d이고 밑변이 %d인 삼각형의 면적은 %d입니다." % (height, base, area))
+
+
+base = int(input("사각형의 너비 입력 :"))
+height=int(input("사각형의 높이 입력 :"))
+area = base *height
+
+print(f"높이가 {height}이고 밑변이 {base}인 사각형의 면적은 {area}입니다.")
