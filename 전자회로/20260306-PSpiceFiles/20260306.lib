@@ -1,0 +1,19 @@
+* PSpice Model Editor - Version 17.2.0
+*$
+.MODEL DI_1N4004 D  ( IS=76.9p RS=42.0m BV=400 IBV=5.00u
++ CJO=39.8p  M=0.333 N=1.45 TT=4.32u )
+*$
+.MODEL SML-E12V8W D
++ IS=2.9413E-18
++ N=2.0305
++ RS=5.3345
++ IKF=1.2209E-3
++ EG=2.6000
++ CJO=3.3200E-12
++ M=.1465
++ VJ=.79062
++ ISR=979.68E-15
++ NR=7
++ BV=5
++ TT=9.8222E-9
+*$

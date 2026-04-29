@@ -1,0 +1,303 @@
+
+**** 03/13/26 12:04:17 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-df"  [ D:\ORCAD\SPICE\20260313-PSpiceFiles\SCHEMATIC1\df.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "df.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+.LIB "../../../mydevice.lib" 
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.TRAN  0 30ms 0 1us 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source 20260313
+R_R3         CON N03529  47k TC=0,0 
+U_DSTM1         STIM(1,1) $G_DPWR $G_DGND CON IO_STM IO_LEVEL=0 
++ 0 0
++ +5ms 1
++REPEAT FOREVER
++ +5ms 0
++  +5ms 1
++ ENDREPEAT
+M_M2         N03721 N03529 0 0 CEDM7001
+V_V1         N03714 0 5V
+R_R2         N03714 N03721  10k TC=0,0 
+M_M1         OUT N03721 N03714 N03714 CEDM8001
+R_R1         OUT 0  1k TC=0,0 
+C_C1         OUT 0  1u  TC=0,0 
+R_R6         CON N04844  47k TC=0,0 
+M_M4         N047660 N04844 0 0 CEDM7001
+R_R5         N04582 N04660  10k TC=0,0 
+M_M3         OUT N04660 N04582 N04582 CEDM8001
+V_V2         N04582 0 5V
+U_DSTM2         STIM(1,1) $G_DPWR $G_DGND CON IO_STM IO_LEVEL=0 
++ 0 0
++ +5ms 1
++REPEAT FOREVER
++ +5ms 0
++  +5ms 1
++ ENDREPEAT
+C_C2         OUT 0  1u  TC=0,0 
+R_R4         OUT 0  1k TC=0,0 
+R_R7         N04660 N047660  1k TC=0,0 
+C_C3         OUT N04660  5n  TC=0,0 
+M_M6         N06685 N05787 0 0 CEDM7001
+R_R8         OUT 0  1k TC=0,0 
+C_C4         OUT N05575  5n  TC=0,0 
+V_V3         N05471 0 5V
+C_C5         OUT 0  1u  TC=0,0 
+R_R11         CON N05787  47k TC=0,0 
+R_R10         N05575 N06685  1k TC=0,0 
+U_DSTM3         STIM(1,1) $G_DPWR $G_DGND CON IO_STM IO_LEVEL=0 
++ 0 0
++ +5ms 1
++REPEAT FOREVER
++ +5ms 0
++  +5ms 1
++ ENDREPEAT
+M_M5         OUT N05575 N05471 N05471 CEDM8001
+R_R9         N05471 N05575  10k TC=0,0 
+R_R12         OUT N06496  1k TC=0,0 
+M_M7         N06496 N06685 0 0 CEDM7001
+
+**** RESUMING df.cir ****
+.END
+
+
+**** Generated AtoD and DtoA Interfaces ****
+
+*
+* Analog/Digital interface for node CON
+*
+* Moving U_DSTM1:OUT1 from analog node CON to new digital node CON$DtoA
+X$CON_DtoA1
++ CON$DtoA
++ CON
++ $G_DPWR
++ $G_DGND
++ DtoA_STM
++       PARAMS: DRVH=   0      DRVL=   0      CAPACITANCE=   0     
+* Moving U_DSTM3:OUT1 from analog node CON to new digital node CON$DtoA2
+X$CON_DtoA2
++ CON$DtoA2
++ CON
++ $G_DPWR
++ $G_DGND
++ DtoA_STM
++       PARAMS: DRVH=   0      DRVL=   0      CAPACITANCE=   0     
+* Moving U_DSTM2:OUT1 from analog node CON to new digital node CON$DtoA3
+X$CON_DtoA3
++ CON$DtoA3
++ CON
++ $G_DPWR
++ $G_DGND
++ DtoA_STM
++       PARAMS: DRVH=   0      DRVL=   0      CAPACITANCE=   0     
+*
+* Analog/Digital interface power supply subcircuits
+*
+X$DIGIFPWR 0 DIGIFPWR
+
+
+**** 03/13/26 12:04:17 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-df"  [ D:\ORCAD\SPICE\20260313-PSpiceFiles\SCHEMATIC1\df.sim ] 
+
+
+ ****     MOSFET MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               CEDM7001        CEDM8001        
+               NMOS            PMOS            
+       LEVEL    3               3            
+           L    2.000000E-06    2.000000E-06 
+           W     .91            1.3          
+         VTO    2.3142         -1.7          
+          KP    1.038000E-06  513.050000E-09 
+       GAMMA    0               0            
+         PHI     .6              .6          
+      LAMBDA    0               0            
+          RD    1.000000E-03    2.4614       
+          RS     .01             .01         
+          RG    5               5            
+          RB    1.000000E-03    1.000000E-03 
+         RDS   66.667000E+09    1.000000E+06 
+          IS   10.000000E-15   10.000000E-15 
+          JS    0               0            
+          PB    1.2215          1.8926       
+        PBSW    1.2215          1.8926       
+         CBD   20.634000E-12   21.401000E-12 
+          CJ    0               0            
+        CJSW    0               0            
+          MJ    1.5             1.5          
+        CGSO   10.989000E-15    7.692300E-15 
+        CGDO   11.579000E-12    7.845400E-12 
+        CGBO    0               0            
+         TOX    2.000000E-06    2.000000E-06 
+          XJ    0               0            
+          UO                  300            
+       UCRIT   10.000000E+03   10.000000E+03 
+       KAPPA    1.000000E-12    1.000000E-12 
+      DIOMOD    1               1            
+         VFB    0               0            
+        LETA    0               0            
+        WETA    0               0            
+          U0    0               0            
+        TEMP    0               0            
+         VDD    5               5            
+       XPART    0               0            
+
+
+**** 03/13/26 12:04:17 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-df"  [ D:\ORCAD\SPICE\20260313-PSpiceFiles\SCHEMATIC1\df.sim ] 
+
+
+ ****     Digital Input MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               DINSTM          
+      S0NAME 0               
+       S0TSW  500.000000E-12 
+       S0RLO     .5          
+       S0RHI    1.000000E+03 
+      S1NAME 1               
+       S1TSW  500.000000E-12 
+       S1RLO    1.000000E+03 
+       S1RHI     .5          
+      S2NAME X               
+       S2TSW  500.000000E-12 
+       S2RLO     .429        
+       S2RHI    1.16         
+      S3NAME R               
+       S3TSW  500.000000E-12 
+       S3RLO     .429        
+       S3RHI    1.16         
+      S4NAME F               
+       S4TSW  500.000000E-12 
+       S4RLO     .429        
+       S4RHI    1.16         
+      S5NAME Z               
+       S5TSW  500.000000E-12 
+       S5RLO    1.000000E+06 
+       S5RHI    1.000000E+06 
+
+
+**** 03/13/26 12:04:17 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-df"  [ D:\ORCAD\SPICE\20260313-PSpiceFiles\SCHEMATIC1\df.sim ] 
+
+
+ ****     Digital IO  MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               IO_STM          
+        DRVL    0            
+        DRVH    0            
+       DtoA1 DtoA_STM        
+       DtoA2 DtoA_STM        
+       DtoA3 DtoA_STM        
+       DtoA4 DtoA_STM        
+       TPWRT  100.000000E+03 
+
+
+**** 03/13/26 12:04:17 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-df"  [ D:\ORCAD\SPICE\20260313-PSpiceFiles\SCHEMATIC1\df.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  CON)     .0025  (  OUT)     .0037  (N03529)     .0025 (N03714)    5.0000     
+
+(N03721)    5.0000 (N04582)    5.0000 (N04660)    5.0000 (N04844)     .0025     
+
+(N05471)    5.0000 (N05575)    5.0000 (N05787)     .0025 (N06496) 2.994E-06     
+
+(N06685)    5.0000 ($G_DGND)    0.0000                   ($G_DPWR)    5.0000    
+
+(N047660)    5.0000                   
+
+
+
+ DGTL NODE : STATE  DGTL NODE : STATE  DGTL NODE : STATE  DGTL NODE : STATE
+
+
+(CON$DtoA2) : 0    (CON$DtoA) : 0     (CON$DtoA3) : 0    
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V1        -4.996E-06
+    V_V2        -4.996E-06
+    V_V3        -4.996E-06
+    X$DIGIFPWR.VDPWR  -1.500E-02
+    X$DIGIFPWR.VDGND  -5.000E-06
+
+    TOTAL POWER DISSIPATION   7.51E-02  WATTS
+
+
+
+          JOB CONCLUDED
+
+**** 03/13/26 12:04:17 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-df"  [ D:\ORCAD\SPICE\20260313-PSpiceFiles\SCHEMATIC1\df.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =        2.89
+

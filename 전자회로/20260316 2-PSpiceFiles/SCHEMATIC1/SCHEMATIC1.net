@@ -1,0 +1,14 @@
+* source 20260316 2
+X_U2C         REF N04282 VCC 0 N04292 TLC07X_5V
+C_C1         N04394 N04406  1u  TC=0,0 
+C_C2         N04292 N04444  1u  TC=0,0 
+R_R10         N04282 N04292  2K TC=0,0 
+R_R12         N04444 0  10K TC=0,0 
+V_V5         N04394 0  
++SIN 0V 1V 1kHz 0 0 0
+R_R11         N04406 N04282  1k TC=0,0 
+R_R18         REF 0  10k TC=0,0 
+C_C6         REF 0  1n  TC=0,0 
+V_V3         VCC 0 12V
+V_V2         VEE 0 -12V
+R_R17         VCC REF  10k TC=0,0 

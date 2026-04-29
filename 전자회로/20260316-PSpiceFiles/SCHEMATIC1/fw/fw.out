@@ -1,0 +1,125 @@
+
+**** 03/16/26 14:19:36 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-fw"  [ D:\ORCAD\SPICE\20260316-PSpiceFiles\SCHEMATIC1\fw.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "fw.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.TRAN  0 5ms 0 1us 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source 20260316
+X_U1A         0 N00128 VCC VEE INV LM324
+R_R1         EI N00128  1k TC=0,0 
+R_R2         N00128 INV  10K TC=0,0 
+V_V2         VEE 0 -12V
+V_V3         VCC 0 12V
+V_V4         EI 0  
++SIN 0V 1V 1kHz 0 0 0
+R_R3         INV 0  10K TC=0,0 
+R_R4         N01301 NON  90MEG TC=0,0 
+R_R5         0 N01301  10MEG TC=0,0 
+X_U1B         EI N01301 VCC VEE NON LM324
+R_R6         NON 0  10K TC=0,0 
+X_U2B         EI BUFFER VCC VEE BUFFER LM324
+R_R9         BUFFER 0  10K TC=0,0 
+R_R11         N03426 N02762  1k TC=0,0 
+R_R10         N02762 N02772  2K TC=0,0 
+R_R12         N03496 0  10K TC=0,0 
+X_U2C         N02892 N02762 VCC 0 N02772 LM324
+V_V5         N02846 0  
++SIN 0V 1V 1kHz 0 0 0
+V_V6         N02892 0 6V
+C_C1         N02846 N03426  1u  TC=0,0 
+C_C2         N02772 N03496  1u  TC=0,0 
+R_R14         N04123 N04037  1K TC=0,0 
+X_U3B         N04767 N04037 VCC 0 N04047 LM324
+R_R13         N04037 N04047  1K TC=0,0 
+R_R15         N04920 0  10K TC=0,0 
+V_V7         N04123 0 6V
+C_C3         EI N04767  1u  TC=0,0 
+C_C4         N04047 N04920  1u  TC=0,0 
+
+**** RESUMING fw.cir ****
+.END
+
+ERROR -- EVALUATION VERSION analog Node Limit (75 Nodes) Exceeded!
+
+
+
+
+ABORTING SIMULATION
+**** 03/16/26 14:19:36 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-fw"  [ D:\ORCAD\SPICE\20260316-PSpiceFiles\SCHEMATIC1\fw.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+Node counts:
+  Top level (NUNODS)                =          20
+  External (NCNODS)                 =         105
+  Total (NUMNOD)                    =         105
+
+Total device count (NUMEL)          =         203
+  Capacitors (C)                    =          14
+  Diodes (D)                        =          25
+  VCVS (E)                          =           5
+  CCCS (F)                          =          15
+  VCCS (G)                          =          10
+  CCVS (H)                          =           5
+  Current Sources (I)               =           5
+  BJTs (Q)                          =          10
+  Resistors (R)                     =          58
+  Voltage Sources (V)               =          36
+  ISwitches (W)                     =          20
+
+Number of subcircuits (X)           =           5
+
+Analysis statistics:
+  No. total time points (NUMTTP)    =           0
+  No. rejected time points (NUMRTP) =           0
+  No. iterations (NUMNIT)           =           0
+
+Load Threads                        =           1
+
+Runtime statistics:                       Seconds      Iterations
+  Readin                            =         .03
+  General setup                     =        0.00
+  CMI setup                     =        0.00
+  Setup                             =        0.00
+  DC sweep                          =        0.00               0
+  Bias point                        =        0.00               0
+  AC and noise                      =        0.00               0
+  Total transient analysis          =        0.00
+  Output                            =        0.00
+  Overhead                          =         .02
+  Total job time                    =         .03
+

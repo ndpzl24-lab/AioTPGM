@@ -1,0 +1,206 @@
+//* TheUARTprogram.c
+// *
+// * Created: 2026-04-13 오후 2:13:31
+// * Author: 성민
+
+               
+#include <mega128a.h>
+#include <delay.h>
+
+typedef unsigned char U8;
+
+// I2C 핀 정의
+#define SCL_OUT     DDRD |= 0x01
+#define SDA_OUT     DDRD |= 0x02
+#define SDA_IN      DDRD &= 0xFD
+#define CLK_HIGH    PORTD |= 0x01
+#define CLK_LOW     PORTD &= 0xFE
+#define DAT_HIGH    PORTD |= 0x02
+#define DAT_LOW     PORTD &= 0xFD
+
+// 전역 변수
+U8 DEV_ADD_W = 0xA0;
+U8 DEV_ADD_R = 0xA1;
+volatile char menu_select = 0;
+
+// 함수 선언
+void IIC_START(void);
+void IIC_STOP(void);
+void ACK_write(void);
+void no_ACK(void);
+void Process_8data(U8 value);
+U8 Process_8data_read(void);
+void Byte_write(U8 addr, U8 data);
+U8 Random_read(U8 addr);
+
+void Putch(char data);
+void Puts(char *str);
+void Display_MainMenu(void);
+
+// UART 송신
+void Putch(char data) {
+    while((UCSR0A & 0x20) == 0x0);
+    UDR0 = data;
+}
+
+void Puts(char *str) {
+    while(*str) Putch(*str++);
+}
+
+// UART 수신 인터럽트
+interrupt [USART0_RXC] void usart0_rx(void) {
+    menu_select = UDR0;
+}
+
+void main(void) {
+    // 초기화
+    DDRC = 0xFF; 
+    SCL_OUT; SDA_OUT;
+
+    // UART0 설정 (9600bps)
+    UCSR0B = 0b10011000; // RXIE, RXEN, TXEN
+    UCSR0C = 0b00000110; // 8-bit
+    UBRR0L = 103;
+
+    SREG |= 0x80; // 인터럽트 허용
+
+    Display_MainMenu();
+
+    while(1) {
+        if(menu_select != 0) {
+            char choice = menu_select;
+            menu_select = 0; // 변수 초기화
+
+            switch(choice) {
+                case '1':
+                    Puts("\r\n1 Byte write mode\r\n");
+                    Byte_write(0x00, 0x55); // 예시: 0번지에 0x55 쓰기
+                    Puts("Done. (Data: 0x55 to Addr 0x00)\r\n");
+                    Puts("\r\nMain menu : press M\r\n");
+                    break;
+
+                case '2':
+                    Puts("\r\nPage write mode\r\n");
+                    // Page write 로직 구현부
+                    Puts("Function not implemented yet.\r\n");
+                    Puts("\r\nMain menu : press M\r\n");
+                    break;
+
+                case '3':
+                    Puts("\r\nRandom Read mode\r\n");
+                    {
+                        U8 data = Random_read(0x00);
+                        Puts("Read Addr 0x00: ");
+                        Putch((data >> 4) + ( (data >> 4) < 10 ? '0' : 'A'-10 ));
+                        Putch((data & 0x0F) + ( (data & 0x0F) < 10 ? '0' : 'A'-10 ));
+                        Puts("\r\n");
+                    }
+                    Puts("\r\nMain menu : press M\r\n");
+                    break;
+
+                case '4':
+                    Puts("\r\nSequential mode\r\n");
+                    // Sequential read 로직 구현부
+                    Puts("\r\nMain menu : press M\r\n");
+                    break;
+
+                case 'm':
+                case 'M':
+                    Display_MainMenu();
+                    break;
+            }
+        }
+    }
+}
+
+void Display_MainMenu(void) {
+    Puts("\r\n----------------------------------");
+    Puts("\r\nThe UART program mode");
+    Puts("\r\n    please press the number");
+    Puts("\r\n         press 1 : 1 Byte write mode");
+    Puts("\r\n         press 2 : page write mode");
+    Puts("\r\n         press 3 : Random Read mode");
+    Puts("\r\n         press 4 : Sequential mode");
+    Puts("\r\n         press M : Main menu");
+    Puts("\r\n----------------------------------\r\n");
+}
+
+// --- I2C 하위 함수 (기본 베이스 유지) ---
+
+void IIC_START(void) {
+    SDA_OUT; DAT_HIGH; CLK_HIGH; delay_us(3);
+    DAT_LOW; delay_us(3);
+    CLK_LOW; delay_us(5);
+}
+
+void IIC_STOP(void) {
+    SDA_OUT; DAT_LOW; CLK_HIGH; delay_us(3);
+    DAT_HIGH; delay_us(3);
+    delay_ms(5); // EEPROM 내부 쓰기 시간 대기
+}
+
+void Process_8data(U8 value) {
+    U8 i;
+    SDA_OUT;
+    for(i=0; i<8; i++) {
+        if((value & 0x80) == 0x80) DAT_HIGH;
+        else DAT_LOW;
+        delay_us(1);
+        CLK_HIGH; delay_us(5);
+        CLK_LOW; delay_us(4);
+        value <<= 1;
+    }
+}
+
+U8 Process_8data_read(void) {
+    U8 i, res = 0;
+    SDA_IN;
+    for(i=0; i<8; i++) {
+        res <<= 1;
+        CLK_HIGH; delay_us(5);
+        if((PIND & 0x02) == 0x02) res |= 0x01;
+        CLK_LOW; delay_us(4);
+    }
+    return res;
+}
+
+void ACK_write(void) {
+    SDA_IN;
+    CLK_HIGH; delay_us(10);
+    CLK_LOW;
+    SDA_OUT; delay_us(6);
+}
+
+void no_ACK(void) {
+    SDA_OUT; DAT_HIGH;
+    CLK_HIGH; delay_us(10);
+    CLK_LOW;
+}
+
+void Byte_write(U8 addr, U8 data) {
+    IIC_START();
+    Process_8data(DEV_ADD_W);
+    ACK_write();
+    Process_8data(addr);
+    ACK_write();
+    Process_8data(data);
+    ACK_write();
+    IIC_STOP();
+}
+
+U8 Random_read(U8 addr) {
+    U8 data;
+    IIC_START();
+    Process_8data(DEV_ADD_W);
+    ACK_write();
+    Process_8data(addr);
+    ACK_write();
+    
+    IIC_START(); // Restart
+    Process_8data(DEV_ADD_R);
+    ACK_write();
+    data = Process_8data_read();
+    no_ACK();
+    IIC_STOP();
+    return data;
+}

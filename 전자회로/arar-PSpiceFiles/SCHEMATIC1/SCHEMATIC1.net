@@ -1,0 +1,5 @@
+* source ARAR
+R_R1         IN OUT  1k TC=0,0 
+C_C1         OUT 0  {0.159u/5}  TC=0,0 
+V_V1         IN 0  AC 1V
++SIN 0 1 1k 0 0 0

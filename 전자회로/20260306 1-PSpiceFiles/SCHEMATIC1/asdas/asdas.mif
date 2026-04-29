@@ -1,0 +1,3 @@
+ lib=D:\ORCAD\SPICE\mydevice.lib, offset=5246, size=281
+ lib=C:\Cadence\SPB_17.2\tools\PSpice\Library\diode.lib, offset=603611, size=308
+ lib=C:\Cadence\SPB_17.2\tools\PSpice\Library\bipolar.lib, offset=200861, size=315

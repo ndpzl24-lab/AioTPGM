@@ -1,0 +1,30 @@
+Project
+  : 8bit AVR Micro-controller(Atmega128) 를 활용한 제어 프로그래밍
+Contents
+  : Timer, PWM, External Interrupt, ADC, UART peripheral devices 활용한 임베디드 시스템 제어
+
+1. CPU clock speed 16MHz
+2. External Interrupt 4channel 적용
+    : Trigger falling edge 2channel, rising edge 2channel
+    : External Interrupt service routine Bit flag 적용
+3. Timer 2channel 
+    : 8bit Overflow mode, Timer Interrupt 적용
+    : 적용 주기 ???
+    : 16bit Compare match mode, Timer Interrupt  적용
+    : 적용 주기 ???
+4. 10bits Phase Correct Pulse Width Modulation 적용
+    : 적용 duty ???% 주파수 
+5. UART 통신 
+    : 속도 9600bps, 송신 및 수신 Interrupt 적용
+    : ADC를 통한 전압 센싱 data 전송
+6. Analog to Digital Converter
+    : 10bit resolution 적용
+    : Conversion time ???
+    : 온도센서(LM35D), 전압 sensing
+
+7. 임베디드 프로그래밍 설계
+    : External Interrupt Nesting 제한
+    : External Interrupt service routine 시간은 매우 짧게 구성(usec단위)
+    : 1-period time을 usec로 설계함
+
+8. MISRA ( Motor Industry Software Reliability Association) 

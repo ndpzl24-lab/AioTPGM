@@ -1,0 +1,244 @@
+
+**** 03/16/26 14:30:24 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-wd"  [ D:\ORCAD\SPICE\20260316 1-PSpiceFiles\SCHEMATIC1\wd.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "wd.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.TRAN  0 5ms 0 1us 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source 20260316 1
+R_R11         N03872 N03748  1k TC=0,0 
+V_V6         N03964 0 6V
+C_C1         N03860 N03872  1u  TC=0,0 
+R_R10         N03748 N03758  2K TC=0,0 
+X_U2C         N03964 N03748 VCC 0 N03758 LM324
+V_V5         N03860 0  
++SIN 0V 1V 1kHz 0 0 0
+R_R12         N03908 0  10K TC=0,0 
+C_C2         N03758 N03908  1u  TC=0,0 
+R_R14         N051921 N05142  1K TC=0,0 
+R_R15         N05298 0  10K TC=0,0 
+R_R13         N05142 N05152  2K TC=0,0 
+X_U3B         REF N05142 VCC 0 N05152 LM324
+C_C4         N05152 N05298  1u  TC=0,0 
+V_V3         VCC 0 12V
+V_V2         VEE 0 -12V
+V_V9         EI 0  
++SIN 0V 1V 1kHz 0 0 0
+R_R17         VCC REF  10k TC=0,0 
+R_R18         REF 0  10k TC=0,0 
+C_C5         EI N051921  1u  TC=0,0 
+C_C6         REF 0  1n  TC=0,0 
+
+**** RESUMING wd.cir ****
+.END
+
+**** 03/16/26 14:30:24 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-wd"  [ D:\ORCAD\SPICE\20260316 1-PSpiceFiles\SCHEMATIC1\wd.sim ] 
+
+
+ ****     Diode MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U2C.dx        X_U2C.dy        X_U3B.dx        X_U3B.dy        
+          IS  800.000000E-18  800.000000E-18  800.000000E-18  800.000000E-18 
+          RS    1               1.000000E-03    1               1.000000E-03 
+         CJO                   10.000000E-12                   10.000000E-12 
+
+
+**** 03/16/26 14:30:24 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-wd"  [ D:\ORCAD\SPICE\20260316 1-PSpiceFiles\SCHEMATIC1\wd.sim ] 
+
+
+ ****     BJT MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U2C.qx        X_U3B.qx        
+               PNP             PNP             
+       LEVEL    1               1            
+          IS  800.000000E-18  800.000000E-18 
+          BF  166.7           166.7          
+          NF    1               1            
+          BR    1               1            
+          NR    1               1            
+         ISS    0               0            
+          RE    0               0            
+          RC    0               0            
+         CJE    0               0            
+         VJE     .75             .75         
+         CJC    0               0            
+         VJC     .75             .75         
+         MJC     .33             .33         
+        XCJC    1               1            
+         CJS    0               0            
+         VJS     .75             .75         
+          KF    0               0            
+          AF    1               1            
+          CN    2.2             2.2          
+           D     .52             .52         
+
+
+**** 03/16/26 14:30:24 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-wd"  [ D:\ORCAD\SPICE\20260316 1-PSpiceFiles\SCHEMATIC1\wd.sim ] 
+
+
+ ****     Current Controlled Switch MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U2C.sw2       X_U2C.sw1       X_U2C.sw3       X_U2C.sw4       
+         RON    1               1               1               1            
+        ROFF   10.000000E+06   10.000000E+06   10.000000E+06   10.000000E+06 
+         ION    0              -1.000000E-06   -1.000000E-06    0            
+        IOFF   -1.000000E-06    0               0              -1.000000E-06 
+
+
+               X_U3B.sw2       X_U3B.sw1       X_U3B.sw3       X_U3B.sw4       
+         RON    1               1               1               1            
+        ROFF   10.000000E+06   10.000000E+06   10.000000E+06   10.000000E+06 
+         ION    0              -1.000000E-06   -1.000000E-06    0            
+        IOFF   -1.000000E-06    0               0              -1.000000E-06 
+
+
+**** 03/16/26 14:30:24 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-wd"  [ D:\ORCAD\SPICE\20260316 1-PSpiceFiles\SCHEMATIC1\wd.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(   EI)    0.0000  (  REF)    6.0002  (  VCC)   12.0000  (  VEE)  -12.0000      
+
+(N03748)    5.9998 (N03758)    5.9997 (N03860)    0.0000 (N03872)    5.9998     
+
+(N03908)    0.0000 (N03964)    6.0000 (N05142)    6.0000 (N05152)    5.9999     
+
+(N05298)    0.0000 (N051921)    6.0000                   (X_U2C.6) 53.62E-09    
+
+(X_U2C.7)    5.9997                   (X_U2C.8)    5.9997                       
+
+(X_U2C.9)    0.0000                   (X_U2C.a)   12.0000                       
+
+(X_U2C.b) 49.43E-09                   (X_U3B.6) 11.39E-09                       
+
+(X_U3B.7)    5.9999                   (X_U3B.8)    5.9999                       
+
+(X_U3B.9)    0.0000                   (X_U3B.a)   12.0000                       
+
+(X_U3B.b) 49.43E-09                   (X_U2C.10)    6.6076                      
+
+(X_U2C.11)     .0398                  (X_U2C.12)     .0396                      
+
+(X_U2C.13)    6.5937                  (X_U2C.14)    6.5937                      
+
+(X_U2C.53)   10.5000                  (X_U2C.54)     .8220                      
+
+(X_U2C.90)-44.96E-06                  (X_U2C.91)   40.0000                      
+
+(X_U2C.92)  -40.0000                  (X_U2C.99)    6.0000                      
+
+(X_U3B.10)    6.6078                  (X_U3B.11)     .0398                      
+
+(X_U3B.12)     .0396                  (X_U3B.13)    6.5939                      
+
+(X_U3B.14)    6.5940                  (X_U3B.53)   10.5000                      
+
+(X_U3B.54)     .8220                  (X_U3B.90)-44.96E-06                      
+
+(X_U3B.91)   40.0000                  (X_U3B.92)  -40.0000                      
+
+(X_U3B.99)    6.0000                  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V6         4.474E-08
+    V_V5         0.000E+00
+    V_V3        -3.275E-03
+    V_V2         0.000E+00
+    V_V9         0.000E+00
+    X_U2C.vb     5.362E-13
+    X_U2C.vc     4.501E-12
+    X_U2C.ve     5.066E-12
+    X_U2C.vlim  -4.496E-08
+    X_U2C.vlp   -4.000E-11
+    X_U2C.vln   -4.000E-11
+    X_U3B.vb     1.139E-13
+    X_U3B.vc     4.501E-12
+    X_U3B.ve     5.066E-12
+    X_U3B.vlim  -4.496E-08
+    X_U3B.vlp   -4.000E-11
+    X_U3B.vln   -4.000E-11
+
+    TOTAL POWER DISSIPATION   3.93E-02  WATTS
+
+
+
+          JOB CONCLUDED
+
+**** 03/16/26 14:30:24 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-wd"  [ D:\ORCAD\SPICE\20260316 1-PSpiceFiles\SCHEMATIC1\wd.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =         .83
+

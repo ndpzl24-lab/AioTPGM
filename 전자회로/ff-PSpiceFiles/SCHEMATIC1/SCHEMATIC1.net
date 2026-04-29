@@ -1,0 +1,5 @@
+* source FF
+V_V1         N00108 0 0Vdc
+R_R1         N00108 N00115  1k TC=0,0 
+R_R2         N00115 N00122  1k TC=0,0 
+R_R3         0 N00122  1k TC=0,0 

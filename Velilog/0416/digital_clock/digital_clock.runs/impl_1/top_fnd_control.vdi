@@ -1,0 +1,86 @@
+#-----------------------------------------------------------
+# Vivado v2025.2.1 (64-bit)
+# SW Build 6403652 on Thu Mar 19 19:48:24 GMT 2026
+# IP Build 6403511 on Thu Mar 19 12:41:45 MDT 2026
+# SharedData Build 6403650 on Thu Mar 19 14:02:13 MDT 2026
+# Start of session at: Fri Apr 17 16:44:54 2026
+# Process ID         : 8484
+# Current directory  : C:/AIOT/Verilog/0416/digital_clock/digital_clock.runs/impl_1
+# Command line       : vivado.exe -log top_fnd_control.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source top_fnd_control.tcl -notrace
+# Log file           : C:/AIOT/Verilog/0416/digital_clock/digital_clock.runs/impl_1/top_fnd_control.vdi
+# Journal file       : C:/AIOT/Verilog/0416/digital_clock/digital_clock.runs/impl_1\vivado.jou
+# Running On         : DESKTOP-Q1F9NDB
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : 12th Gen Intel(R) Core(TM) i3-1215U
+# CPU Frequency      : 2496 MHz
+# CPU Physical cores : 6
+# CPU Logical cores  : 8
+# Host memory        : 16856 MB
+# Swap memory        : 2147 MB
+# Total Virtual      : 19003 MB
+# Available Virtual  : 6642 MB
+#-----------------------------------------------------------
+source top_fnd_control.tcl -notrace
+Command: open_checkpoint top_fnd_control_routed.dcp
+
+Starting open_checkpoint Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.073 . Memory (MB): peak = 329.402 ; gain = 5.047
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 784.082 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 43 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2025.2.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Read ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 874.590 ; gain = 0.074
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+INFO: [Designutils 20-5722] Start Reading Physical Databases.
+Reading placement.
+Read Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1484.852 ; gain = 0.000
+Reading placer database...
+Read Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1484.852 ; gain = 0.000
+Read PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1484.852 ; gain = 0.000
+Read placeStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 1484.852 ; gain = 0.000
+Read PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1484.852 ; gain = 0.000
+Reading routing.
+Read RouteStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1484.852 ; gain = 0.000
+Read Physdb Files: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.049 . Memory (MB): peak = 1484.852 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.106 . Memory (MB): peak = 1484.852 ; gain = 9.484
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1484.852 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Project 1-604] Checkpoint was created with Vivado v2025.2.1 (64-bit) build 6403652
+WARNING: [Vivado 12-23575] Critical violations of the methodology design rules detected. Critical violations may contribute to timing failures or cause functional issues in hardware. Run report_methodology for more information.
+open_checkpoint: Time (s): cpu = 00:00:31 ; elapsed = 00:00:27 . Memory (MB): peak = 1484.852 ; gain = 1169.113
+Command: write_bitstream -force top_fnd_control.bit
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a35t'
+Running DRC as a precondition to command write_bitstream
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/AMDDesignTools/2025.2.1/Vivado/data/ip'.
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado 12-3199] DRC finished with 0 Errors
+INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
+Integrating Hard IP ELF/MEM with the PDI.
+INFO: [Designutils 20-2272] Running write_bitstream with 2 threads.
+Loading data files...
+Loading site data...
+Loading route data...
+Processing options...
+Creating bitmap...
+Creating bitstream...
+Bitstream compression saved 14918304 bits.
+Writing bitstream ./top_fnd_control.bit...
+INFO: [Vivado 12-1842] Bitgen Completed Successfully.
+INFO: [Common 17-83] Releasing license: Implementation
+22 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+write_bitstream completed successfully
+write_bitstream: Time (s): cpu = 00:00:11 ; elapsed = 00:00:10 . Memory (MB): peak = 1989.176 ; gain = 504.324
+INFO: [Common 17-206] Exiting Vivado at Fri Apr 17 16:45:35 2026...

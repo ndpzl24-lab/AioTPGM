@@ -1,0 +1,20 @@
+** Profile: "SCHEMATIC1-ar"  [ D:\ORCAD\SPICE\ddd-PSpiceFiles\SCHEMATIC1\ar.sim ] 
+
+** Creating circuit file "ar.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.TRAN  0 10ms 0 10us 
+.STEP PARAM fr LIST 100 10k 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+.END

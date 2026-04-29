@@ -1,0 +1,93 @@
+/*
+ * ADC7.c
+ *
+ * Created: 2026-04-13 오후 4:42:13
+ * Author: 성민
+ */
+
+#include <mega128.h>
+#include <delay.h>
+
+typedef unsigned char u_char;
+
+// 숫자 0~9 패턴 (기존 코드 유지)
+flash u_char seg_pat[10] = {0x3f, 0x06, 0x5b, 0x4f, 0x66, 0x6d, 0x7d, 0x07, 0x7f, 0x6f};
+
+void AD_disp(int);
+
+void main(void)
+{
+    int ad_val;
+    
+    // 포트 설정 (제공된 코드 유지)
+    DDRB = 0xF0; 
+    DDRD = 0xF0;
+    DDRG = 0x0F;
+    
+    // ADC 설정
+    // ADMUX = 0x07 (채널 7 선택, AREF 5V 기준)
+    // 만약 값이 안나온다면 0x47(AVCC 5V 기준)로 시도해보세요.
+    ADMUX = 0x07; 
+    ADCSRA = 0x87; // ADC 활성화, 128분주
+    delay_ms(5);
+    
+    while (1)
+    {
+        // ADC 변환 시작
+        ADCSRA |= 0x40; 
+        while((ADCSRA & 0x10) == 0); // 변환 완료 대기
+        
+        // ADC 값 읽기 (기존 방식 유지)
+        ad_val = (int)ADCL + ((int)ADCH << 8);
+        
+        // 디스플레이 함수 호출 (약 10ms~20ms 정도 반복 호출하여 잔상 유지)
+        // ADC를 너무 자주 읽으면 숫자가 튈 수 있으므로 반복 루프 활용
+        for(u_char i=0; i<10; i++) {
+            AD_disp(ad_val);      
+        }
+    }
+}
+
+void AD_disp(int val){
+    float f_temp;
+    int ival, buf;
+    u_char N100, N10, N1;
+    
+    // [LM35DZ 계산 공식]
+    // 1. 전압(mV) = (ADC * 5000.0) / 1024.0
+    // 2. 온도(C) = 전압(mV) / 10.0
+    // 즉, 온도 = (ADC * 500.0) / 1024.0
+    f_temp = (float)val * 500.0 / 1024.0;
+    
+    // 소수점 첫째자리까지 표시하기 위해 10을 곱함 (예: 25.4도 -> 254)
+    ival = (int)(f_temp * 10.0 + 0.5);
+    
+    // 자릿수 분리
+    N100 = ival / 100;    // 십의 자리
+    buf = ival % 100;
+    N10 = buf / 10;       // 일의 자리
+    N1 = buf % 10;        // 소수점 첫째 자리
+    
+    // --- 세그먼트 출력 파트 (제공된 배선 로직 유지) ---
+    
+    // 1. 소수점 첫째 자리 (N1)
+    PORTG = 0b00001000;
+    PORTD = ((seg_pat[N1] & 0x0f) << 4) | (PORTD & 0x0F);
+    PORTB = (seg_pat[N1] & 0x70) | (PORTB & 0x0F);
+    delay_ms(2);
+    
+    // 2. 일의 자리 (N10) + 소수점(DP) 표시
+    PORTG = 0b00000100;
+    PORTD = ((seg_pat[N10] & 0x0F) << 4) | (PORTD & 0x0F);
+    PORTB = (seg_pat[N10] & 0x70) | (PORTB & 0x0F);    
+    PORTB |= 0x80; // 일의 자리 옆에 소수점(DP) 켜기 (0x80이 DP라고 가정)
+    delay_ms(2);
+    
+    // 3. 십의 자리 (N100)
+    PORTG = 0b00000010;
+    PORTD = ((seg_pat[N100] & 0x0F) << 4) | (PORTD & 0x0F);
+    PORTB = (seg_pat[N100] & 0x70) | (PORTB & 0x0F);
+    // 십의 자리에는 DP를 끔 (PORTB & 0x7F)
+    PORTB &= 0x7F; 
+    delay_ms(2); 
+}

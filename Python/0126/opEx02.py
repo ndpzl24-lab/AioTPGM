@@ -1,0 +1,23 @@
+#8장 32p
+
+class Bank:
+    def __init__(self, balance):
+        self.__balance = balance
+    def withdraw(self, amount):
+        if self.__balance - amount < 0:
+            print("잔액이 부족합니다.")
+        else:
+            self.__balance = self.__balance - amount
+        print("통장에", amount, "가 출금되었음")
+        self.showBalance()       
+    def deposit(self, amount):
+        self.__balance = self.__balance + amount
+        print("통장에", amount, "가 입금되었음")
+        self.showBalance()
+    def showBalance(self):
+        print(f"현재 잔액은 {self.__balance}입니다.")
+        
+account1 = Bank(1000000)
+account1.showBalance()
+account1.deposit(1500000000)
+account1.withdraw(10000000)

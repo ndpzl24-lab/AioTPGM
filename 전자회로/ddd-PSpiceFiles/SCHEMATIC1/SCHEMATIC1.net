@@ -1,0 +1,10 @@
+* source DDD
+R_R1         EI N01215  1k TC=0,0 
+R_R2         N01215 0  1k TC=0,0 
+L_L1         EI N01257  0.5h  
+R_R3         N01257 0  1k TC=0,0 
+C_C1         EI N01270  0.5uF  TC=0,0 
+R_R4         N01270 0  1k TC=0,0 
+V_V1         EI 0  
++SIN 0 0.5 {fr} 0 0 0
+.PARAM  fr=100

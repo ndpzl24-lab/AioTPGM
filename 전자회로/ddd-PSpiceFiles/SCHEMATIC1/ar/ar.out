@@ -1,0 +1,126 @@
+
+**** 02/23/26 14:33:55 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-ar"  [ D:\ORCAD\SPICE\ddd-PSpiceFiles\SCHEMATIC1\ar.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "ar.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.TRAN  0 10ms 0 10us 
+.STEP PARAM fr LIST 100 10k 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source DDD
+R_R1         EI N01215  1k TC=0,0 
+R_R2         N01215 0  1k TC=0,0 
+L_L1         EI N01257  0.5h  
+R_R3         N01257 0  1k TC=0,0 
+C_C1         EI N01270  0.5uF  TC=0,0 
+R_R4         N01270 0  1k TC=0,0 
+V_V1         EI 0  
++SIN 0 0.5 {fr} 0 0 0
+.PARAM  fr=100
+
+**** RESUMING ar.cir ****
+.END
+
+**** 02/23/26 14:33:55 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-ar"  [ D:\ORCAD\SPICE\ddd-PSpiceFiles\SCHEMATIC1\ar.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     PARAM FR =  100   
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(   EI)    0.0000  (N01215)    0.0000 (N01257)    0.0000 (N01270)    0.0000 
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V1         0.000E+00
+
+    TOTAL POWER DISSIPATION   0.00E+00  WATTS
+
+
+**** 02/23/26 14:33:55 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-ar"  [ D:\ORCAD\SPICE\ddd-PSpiceFiles\SCHEMATIC1\ar.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     PARAM FR =   10.0000E+03
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(   EI)    0.0000  (N01215)    0.0000 (N01257)    0.0000 (N01270)    0.0000 
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V1         0.000E+00
+
+    TOTAL POWER DISSIPATION   0.00E+00  WATTS
+
+
+
+          JOB CONCLUDED
+
+**** 02/23/26 14:33:55 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-ar"  [ D:\ORCAD\SPICE\ddd-PSpiceFiles\SCHEMATIC1\ar.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+ ****     CURRENT STEP                     PARAM FR =   10.0000E+03
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =         .06
+

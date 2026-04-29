@@ -1,0 +1,61 @@
+* source 20260306
+V_V1         N00148 0 0Vdc
+D_D1         N00148 0 D1N4148 
+D_D2         N00148 0 D1N914 
+D_D3         N00148 0 MBD101 
+V_V2         N00673 0 0Vdc
+D_D4         N00673 0 D1N750 
+V_V3         N00922 0 0Vdc
+D_D6         N00922 0 SML-E12V8W 
+V_V4         N01231 0 0Vdc
+D_D7         N01231 0 SCMP13WBC8W1 
+D_D9         A OUT DI_1N4004 
+D_D10         0 B DI_1N4004 
+D_D11         B OUT DI_1N4004 
+R_R1         OUT 0  {R} TC=0,0 
+V_V5         A B  
++SIN 0 {220*1.414} 60Hz 0 0 0
+D_D12         0 A DI_1N4004 
+C_C1         OUT 0  {C}  TC=0,0 
+V_V6         N03193 0 12V
+R_R2         N03193 N03271  345 TC=0,0 
+D_D13         0 N03271 D1N751 
+I_I1         N03594 0 DC 10mA  
+Q_Q1         N03193 N03271 N03594 Q2N3904
+D_D17         B N07855 DI_1N4004 
+C_C2         N07855 0  {C}  TC=0,0 
+D_D14         0 A DI_1N4004 
+R_R4         N07855 0  {R} TC=0,0 
+V_V7         N10072 0  
++SIN 0 {220*1.414} 60Hz 0 0 0
+D_D16         0 B DI_1N4004 
+D_D15         A N07855 DI_1N4004 
+X_TX2    N10079 0 A B SCHEMATIC1_TX2 
+R_R6         OUT 0  {R} TC=0,0 
+D_D18         0 A DI_1N4004 
+D_D19         A OUT DI_1N4004 
+V_V8         N08601 0  
++SIN 0 {220*1.414} 60Hz 0 0 0
+D_D21         B OUT DI_1N4004 
+R_R5         N08601 N08611  1m TC=0,0 
+X_TX3    N08611 0 A B SCHEMATIC1_TX3 
+C_C3         OUT 0  {C}  TC=0,0 
+D_D20         0 B DI_1N4004 
+Q_Q2         N07855 N09313 OUT Q2N3904
+I_I2         OUT 0 DC 0.12  
+D_D22         0 N09313 D1N750 
+R_R7         N07855 N09313  58 TC=0,0 
+R_R8         N10072 N10079  1m TC=0,0 
+.PARAM  c=100uf r=1k
+
+.subckt SCHEMATIC1_TX2 1 2 3 4  
+K_TX2         L1_TX2 L2_TX2 1
+L1_TX2         1 2 1mH
+L2_TX2         3 4 1.49uH
+.ends SCHEMATIC1_TX2
+
+.subckt SCHEMATIC1_TX3 1 2 3 4  
+K_TX3         L1_TX3 L2_TX3 1
+L1_TX3         1 2 1mH
+L2_TX3         3 4 1.49uH
+.ends SCHEMATIC1_TX3

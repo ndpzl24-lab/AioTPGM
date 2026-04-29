@@ -1,0 +1,2 @@
+spram5.v,verilog,xil_defaultlib,../../../../Create_memory.gen/sources_1/ip/spram5/sim/spram5.v,incdir="../../../../../../../../AMDDesignTools/2025.2.1/Vivado/data/rsb/busdef"
+glbl.v,Verilog,xil_defaultlib,glbl.v

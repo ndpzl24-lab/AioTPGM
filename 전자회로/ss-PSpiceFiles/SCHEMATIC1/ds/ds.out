@@ -1,0 +1,219 @@
+
+**** 03/04/26 14:51:46 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-ds"  [ D:\ORCAD\SPICE\ss-PSpiceFiles\SCHEMATIC1\ds.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "ds.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.TRAN  0 3us 0 1ns 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source SS
+V_V1         VCC 0 5v
+L_L1         VCC IC_VCC  10nH  
+U_DSTM1         STIM(1,1) $G_DPWR $G_DGND N01131 IO_STM IO_LEVEL=0 
++ 0 0
++ +.5uS 1
++REPEAT FOREVER
++ +.5uS 0
++  +.5uS 1
++ ENDREPEAT
+X_S1    N01131 IC_GND N01124 IC_GND SCHEMATIC1_S1 
+C_C1         N01124 IC_GND  0.1n  TC=0,0 
+L_L2         0 IC_GND  1nH  
+R_R1         IC_VCC N01124  100 TC=0,0 
+R_R2         IC_VCC N01654  10m TC=0,0 
+L_L3         N01654 N01685  0.2n  
+C_C2         N01685 0  4.7u  TC=0,0 
+
+.subckt SCHEMATIC1_S1 1 2 3 4  
+S_S1         3 4 1 2 Sbreak
+RS_S1         1 2 1G
+.ends SCHEMATIC1_S1
+
+**** RESUMING ds.cir ****
+.END
+
+
+**** Generated AtoD and DtoA Interfaces ****
+
+*
+* Analog/Digital interface for node N01131
+*
+* Moving U_DSTM1:OUT1 from analog node N01131 to new digital node N01131$DtoA
+X$N01131_DtoA1
++ N01131$DtoA
++ N01131
++ $G_DPWR
++ $G_DGND
++ DtoA_STM
++       PARAMS: DRVH=   0      DRVL=   0      CAPACITANCE=   0     
+*
+* Analog/Digital interface power supply subcircuits
+*
+X$DIGIFPWR 0 DIGIFPWR
+
+
+**** 03/04/26 14:51:46 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-ds"  [ D:\ORCAD\SPICE\ss-PSpiceFiles\SCHEMATIC1\ds.sim ] 
+
+
+ ****     Voltage Controlled Switch MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               Sbreak          
+         RON    1            
+        ROFF    1.000000E+06 
+         VON    1            
+        VOFF    0            
+
+
+**** 03/04/26 14:51:46 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-ds"  [ D:\ORCAD\SPICE\ss-PSpiceFiles\SCHEMATIC1\ds.sim ] 
+
+
+ ****     Digital Input MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               DINSTM          
+      S0NAME 0               
+       S0TSW  500.000000E-12 
+       S0RLO     .5          
+       S0RHI    1.000000E+03 
+      S1NAME 1               
+       S1TSW  500.000000E-12 
+       S1RLO    1.000000E+03 
+       S1RHI     .5          
+      S2NAME X               
+       S2TSW  500.000000E-12 
+       S2RLO     .429        
+       S2RHI    1.16         
+      S3NAME R               
+       S3TSW  500.000000E-12 
+       S3RLO     .429        
+       S3RHI    1.16         
+      S4NAME F               
+       S4TSW  500.000000E-12 
+       S4RLO     .429        
+       S4RHI    1.16         
+      S5NAME Z               
+       S5TSW  500.000000E-12 
+       S5RLO    1.000000E+06 
+       S5RHI    1.000000E+06 
+
+
+**** 03/04/26 14:51:46 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-ds"  [ D:\ORCAD\SPICE\ss-PSpiceFiles\SCHEMATIC1\ds.sim ] 
+
+
+ ****     Digital IO  MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               IO_STM          
+        DRVL    0            
+        DRVH    0            
+       DtoA1 DtoA_STM        
+       DtoA2 DtoA_STM        
+       DtoA3 DtoA_STM        
+       DtoA4 DtoA_STM        
+       TPWRT  100.000000E+03 
+
+
+**** 03/04/26 14:51:46 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-ds"  [ D:\ORCAD\SPICE\ss-PSpiceFiles\SCHEMATIC1\ds.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  VCC)    5.0000  (IC_GND)    0.0000 (IC_VCC)    5.0000 (N01124)    4.9995     
+
+(N01131)     .0025 (N01654)    5.0000 (N01685)    5.0000 ($G_DGND)    0.0000    
+
+($G_DPWR)    5.0000                   
+
+
+
+ DGTL NODE : STATE  DGTL NODE : STATE  DGTL NODE : STATE  DGTL NODE : STATE
+
+
+(N01131$DtoA) : 0  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V1        -5.001E-06
+    X$DIGIFPWR.VDPWR  -5.003E-03
+    X$DIGIFPWR.VDGND  -5.000E-06
+
+    TOTAL POWER DISSIPATION   2.50E-02  WATTS
+
+
+
+          JOB CONCLUDED
+
+**** 03/04/26 14:51:46 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-ds"  [ D:\ORCAD\SPICE\ss-PSpiceFiles\SCHEMATIC1\ds.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =         .08
+

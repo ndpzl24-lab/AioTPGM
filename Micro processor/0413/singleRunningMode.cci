@@ -1,0 +1,7 @@
+VERSION:3 SOURCE_TIMESTAMP:5C8D83A8
+NODE:I LEVEL:0 LINE:8 "C:\cvavreval\inc\mega128.h"
+NODE:I LEVEL:0 LINE:9 "C:\cvavreval\inc\delay.h"
+NODE:T LEVEL:0 LINE:11 "u_char"
+NODE:C LEVEL:0 LINE:13 "seg_pat -> FLASH"
+NODE:F LEVEL:0 LINE:17 "main(void)"
+NODE:F LEVEL:0 LINE:40 "AD_disp(int val)"

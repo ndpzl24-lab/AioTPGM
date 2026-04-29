@@ -1,0 +1,23 @@
+* source 20260316 1
+R_R11         N03872 N03748  1k TC=0,0 
+V_V6         N03964 0 6V
+C_C1         N03860 N03872  1u  TC=0,0 
+R_R10         N03748 N03758  2K TC=0,0 
+X_U2C         N03964 N03748 VCC 0 N03758 LM324
+V_V5         N03860 0  
++SIN 0V 1V 1kHz 0 0 0
+R_R12         N03908 0  10K TC=0,0 
+C_C2         N03758 N03908  1u  TC=0,0 
+R_R14         N051921 N05142  1K TC=0,0 
+R_R15         N05298 0  10K TC=0,0 
+R_R13         N05142 N05152  2K TC=0,0 
+X_U3B         REF N05142 VCC 0 N05152 LM324
+C_C4         N05152 N05298  1u  TC=0,0 
+V_V3         VCC 0 12V
+V_V2         VEE 0 -12V
+V_V9         EI 0  
++SIN 0V 1V 1kHz 0 0 0
+R_R17         VCC REF  10k TC=0,0 
+R_R18         REF 0  10k TC=0,0 
+C_C5         EI N051921  1u  TC=0,0 
+C_C6         REF 0  1n  TC=0,0 

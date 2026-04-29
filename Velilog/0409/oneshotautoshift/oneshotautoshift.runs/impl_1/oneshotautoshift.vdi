@@ -1,0 +1,85 @@
+#-----------------------------------------------------------
+# Vivado v2025.2.1 (64-bit)
+# SW Build 6403652 on Thu Mar 19 19:48:24 GMT 2026
+# IP Build 6403511 on Thu Mar 19 12:41:45 MDT 2026
+# SharedData Build 6403650 on Thu Mar 19 14:02:13 MDT 2026
+# Start of session at: Thu Apr  9 13:58:43 2026
+# Process ID         : 16860
+# Current directory  : D:/Verilog/0409/oneshotautoshift/oneshotautoshift.runs/impl_1
+# Command line       : vivado.exe -log oneshotautoshift.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source oneshotautoshift.tcl -notrace
+# Log file           : D:/Verilog/0409/oneshotautoshift/oneshotautoshift.runs/impl_1/oneshotautoshift.vdi
+# Journal file       : D:/Verilog/0409/oneshotautoshift/oneshotautoshift.runs/impl_1\vivado.jou
+# Running On         : DESKTOP-Q1F9NDB
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : 12th Gen Intel(R) Core(TM) i3-1215U
+# CPU Frequency      : 2496 MHz
+# CPU Physical cores : 6
+# CPU Logical cores  : 8
+# Host memory        : 16856 MB
+# Swap memory        : 2080 MB
+# Total Virtual      : 18936 MB
+# Available Virtual  : 5896 MB
+#-----------------------------------------------------------
+source oneshotautoshift.tcl -notrace
+Command: open_checkpoint oneshotautoshift_routed.dcp
+
+Starting open_checkpoint Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.121 . Memory (MB): peak = 324.582 ; gain = 0.750
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 780.789 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 17 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2025.2.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Read ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 872.645 ; gain = 0.000
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+INFO: [Designutils 20-5722] Start Reading Physical Databases.
+Reading placement.
+Read Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1475.969 ; gain = 0.000
+Reading placer database...
+Read Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.019 . Memory (MB): peak = 1475.969 ; gain = 0.000
+Read PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1475.969 ; gain = 0.000
+Read placeStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.019 . Memory (MB): peak = 1475.969 ; gain = 0.000
+Read PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1475.969 ; gain = 0.000
+Reading routing.
+Read RouteStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 1475.969 ; gain = 0.000
+Read Physdb Files: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.104 . Memory (MB): peak = 1475.969 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.241 . Memory (MB): peak = 1475.969 ; gain = 6.062
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1475.969 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Project 1-604] Checkpoint was created with Vivado v2025.2.1 (64-bit) build 6403652
+open_checkpoint: Time (s): cpu = 00:00:40 ; elapsed = 00:00:47 . Memory (MB): peak = 1475.969 ; gain = 1158.898
+Command: write_bitstream -force oneshotautoshift.bit
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a35t'
+Running DRC as a precondition to command write_bitstream
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/AMDDesignTools/2025.2.1/Vivado/data/ip'.
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado 12-3199] DRC finished with 0 Errors
+INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
+Integrating Hard IP ELF/MEM with the PDI.
+INFO: [Designutils 20-2272] Running write_bitstream with 2 threads.
+Loading data files...
+Loading site data...
+Loading route data...
+Processing options...
+Creating bitmap...
+Creating bitstream...
+Bitstream compression saved 15707456 bits.
+Writing bitstream ./oneshotautoshift.bit...
+INFO: [Vivado 12-1842] Bitgen Completed Successfully.
+INFO: [Common 17-83] Releasing license: Implementation
+22 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+write_bitstream completed successfully
+write_bitstream: Time (s): cpu = 00:00:19 ; elapsed = 00:00:30 . Memory (MB): peak = 1982.512 ; gain = 506.543
+INFO: [Common 17-206] Exiting Vivado at Thu Apr  9 14:00:11 2026...

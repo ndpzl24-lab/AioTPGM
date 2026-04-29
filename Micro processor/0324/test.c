@@ -1,0 +1,30 @@
+#include <mega128.h>
+#include <delay.h>    
+const unsigned char led[8] = {0xFE,0xFC,0xF8,0xF0,0xE0,0xC0,0x80,0x00};
+const unsigned char led2[8] = {0xFE,0xFD,0xFB,0xF7,0xEF,0xDF,0xBF,0x7F};
+          
+void main(void){              
+    unsigned char i;
+    DDRC = 0xFF;
+                   
+    while(1){      
+        for (i=0;i<8;i++){
+            PORTC = led[i]; 
+            delay_ms(50);
+             
+        } 
+        for (i=6;i>0;i--){
+            PORTC = led[i]; 
+            delay_ms(50); 
+        }
+        for (i=0;i<8;i++){
+            PORTC = led2[i]; 
+            delay_ms(50);
+             
+        } 
+        for (i=6;i>0;i--){
+            PORTC = led2[i]; 
+            delay_ms(50); 
+        }                                                                   
+    }/*end of while*/
+}/*end of main*/

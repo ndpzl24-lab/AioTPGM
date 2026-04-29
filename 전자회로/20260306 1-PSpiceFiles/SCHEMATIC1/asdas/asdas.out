@@ -1,0 +1,186 @@
+
+**** 03/05/26 16:11:32 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-asdas"  [ D:\ORCAD\SPICE\20260306 1-PSpiceFiles\SCHEMATIC1\asdas.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "asdas.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+.LIB "../../../mydevice.lib" 
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.TRAN  0 50ms 0 10us 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source 20260306 1
+R_R8         N10602 N10610  1m TC=0,0 
+D_D17         B N10704 DI_1N4004 
+I_I2         OUT 0 DC 0.12  
+D_D15         A N10704 DI_1N4004 
+Q_Q2         N10704 N10862 OUT Q2N3904
+D_D22         0 N10862 D1N750 
+X_TX2    N10610 0 A B SCHEMATIC1_TX2 
+V_V7         N10602 0  
++SIN 0 {220*1.414} 60Hz 0 0 0
+R_R7         N10704 N10862  58 TC=0,0 
+D_D14         0 A DI_1N4004 
+R_R4         N10704 0  {R} TC=0,0 
+C_C2         N10704 0  {C}  TC=0,0 
+D_D16         0 B DI_1N4004 
+.PARAM  c=100uf r=1k
+
+.subckt SCHEMATIC1_TX2 1 2 3 4  
+K_TX2         L1_TX2 L2_TX2 1
+L1_TX2         1 2 1mH
+L2_TX2         3 4 1.49uH
+.ends SCHEMATIC1_TX2
+
+**** RESUMING asdas.cir ****
+.END
+
+**** 03/05/26 16:11:32 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-asdas"  [ D:\ORCAD\SPICE\20260306 1-PSpiceFiles\SCHEMATIC1\asdas.sim ] 
+
+
+ ****     Diode MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               DI_1N4004       D1N750          
+          IS   76.900000E-12  880.500000E-18 
+           N    1.45                         
+         ISR                    1.859000E-09 
+          BV  400               4.7          
+         IBV    5.000000E-06     .020245     
+         NBV                    1.6989       
+        IBVL                    1.955600E-03 
+        NBVL                   14.976        
+          RS     .042            .25         
+          TT    4.320000E-06                 
+         CJO   39.800000E-12  175.000000E-12 
+          VJ                     .75         
+           M     .333            .5516       
+        TBV1                  -21.277000E-06 
+
+
+**** 03/05/26 16:11:32 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-asdas"  [ D:\ORCAD\SPICE\20260306 1-PSpiceFiles\SCHEMATIC1\asdas.sim ] 
+
+
+ ****     BJT MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               Q2N3904         
+               NPN             
+       LEVEL    1            
+          IS    6.734000E-15 
+          BF  416.4          
+          NF    1            
+         VAF   74.03         
+         IKF     .06678      
+         ISE    6.734000E-15 
+          NE    1.259        
+          BR     .7371       
+          NR    1            
+         ISS    0            
+          RB   10            
+          RE    0            
+          RC    1            
+         CJE    4.493000E-12 
+         VJE     .75         
+         MJE     .2593       
+         CJC    3.638000E-12 
+         VJC     .75         
+         MJC     .3085       
+        XCJC    1            
+         CJS    0            
+         VJS     .75         
+          TF  301.200000E-12 
+         XTF    2            
+         VTF    4            
+         ITF     .4          
+          TR  239.500000E-09 
+         XTB    1.5          
+          KF    0            
+          AF    1            
+          CN    2.42         
+           D     .87         
+
+
+**** 03/05/26 16:11:32 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-asdas"  [ D:\ORCAD\SPICE\20260306 1-PSpiceFiles\SCHEMATIC1\asdas.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(    A)    -.7611  (    B)    -.7611  (  OUT)   -1.7310  (N10602)    0.0000     
+
+(N10610)    0.0000 (N10704)   -1.5221 (N10862)    -.8027 
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V7         0.000E+00
+
+    TOTAL POWER DISSIPATION   0.00E+00  WATTS
+
+
+
+          JOB CONCLUDED
+
+**** 03/05/26 16:11:32 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-asdas"  [ D:\ORCAD\SPICE\20260306 1-PSpiceFiles\SCHEMATIC1\asdas.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =         .09
+

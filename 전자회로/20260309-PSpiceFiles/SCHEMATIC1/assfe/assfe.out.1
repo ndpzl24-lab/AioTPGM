@@ -1,0 +1,79 @@
+
+**** 03/09/26 15:55:09 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-assfe"  [ D:\ORCAD\SPICE\20260309-PSpiceFiles\SCHEMATIC1\assfe.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "assfe.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+.LIB "../../../mydevice.lib" 
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.DC LIN PARAM v6 -20uA 50uA 0.01u 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source 20260309
+Q_Q1         N00261 N00466 0 Q2N3904
+R_R1         N00265 N00261  1k TC=0,0 
+I_I1         N00293 0 DC {ib}  
+Q_Q2         N00304 N00293 N00265 Q2N3906
+R_R2         N00304 0  1k TC=0,0 
+I_I2         0 N00466 DC {ib}  
+V_V1         N00265 0 5V
+V_V2         N00815 0 5V
+R_R3         N00815 N00871  1k TC=0,0 
+Q_Q3         N00871 N00921 0 Q2N3904
+R_R4         N01063 N00921  86K TC=0,0 
+V_V3         N01063 0 5V
+U_DSTM1         STIM(1,1) $G_DPWR $G_DGND N01633 IO_STM IO_LEVEL=0 
++ 0 0
++ +0.5ms 1
++REPEAT FOREVER
++ +0.5ms 0
++  +0.5ms 1
++ ENDREPEAT
+R_R6         N01633 N01592  86K TC=0,0 
+R_R5         N01472 N01540  1k TC=0,0 
+V_V4         N01472 0 5V
+Q_Q4         N01540 N01592 0 Q2N3904
+V_V5         N01915 0 5V
+R_R7         N01915 N02177  {rc} TC=0,0 
+Q_Q5         N02181 N02077 0 Qmmbt3904tt1
+U_DSTM2         STIM(1,1) $G_DPWR $G_DGND N02071 IO_STM IO_LEVEL=0 
++ 0 0
++ +0.5ms 1
++REPEAT FOREVER
++ +0.5ms 0
++  +0.5ms 1
++ ENDREPEAT
+R_R8         N02071 N02077  {rb} TC=0,0 
+D_D1         N02177 N02181 SCMP13WBC8W1 
+V_V6         N02377 0 5V
+D_D2         N02377 0 SCMP13WBC8W1 
+.PARAM  rc=400 rb=10k ib=0
+
+**** RESUMING assfe.cir ****
+.END
+
+
+ERROR(ORPSIM-15167): Undefined parameter: v6.
+

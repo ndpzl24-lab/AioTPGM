@@ -1,0 +1,36 @@
+* source TEST
+V_V1         N00258 0 6V
+R_R1         N00258 A  1k TC=0,0 
+R_R2         A C  1k TC=0,0 
+R_R3         0 C  1k TC=0,0 
+R_R4         A B  1k TC=0,0 
+R_R5         0 B  3k TC=0,0 
+R_R6         B 0  3k TC=0,0 
+R_R7         B 0  3k TC=0,0 
+V_V2         N01855 0 0Vdc
+R_R8         N01855 N01946  1k TC=0,0 
+R_R9         0 N01869  1k TC=0,0 
+R_R10         N01946 N01869  2k TC=0,0 
+R_R11         N01946 A  1k TC=0,0 
+R_R12         N01869 B  1k TC=0,0 
+V_VTH         N02770 0 3V
+R_RTH         N02770 N02786  3k TC=0,0 
+I_IN         0 N02882 DC 1mA  
+R_RN         0 N02882  3k TC=0,0 
+R_R14         N02786 0  {R} TC=0,0 
+R_R15         N02882 0  {R} TC=0,0 
+V_V3         A B 0Vdc
+X_U1A         N04224 A $G_DPWR $G_DGND 7404 PARAMS:
++ IO_LEVEL=0 MNTYMXDLY=0
+R_R16         A 0  {R} TC=0,0 
+R_R18         N04629 0  {R} TC=0,0 
+R_RTH1         N04609 N04619  7 TC=0,0 
+R_R17         N04619 0  {R} TC=0,0 
+V_VTH1         N04609 0 90mV
+R_RN1         0 N04629  7 TC=0,0 
+I_IN1         0 N04629 DC 12.85mA  
+V_V4         N04224 0 5V
+V_Vs         N05621 0 100V
+R_Rs         N05621 N05628  100 TC=0,0 
+R_RL         N05628 0  {R} TC=0,0 
+.PARAM  r=1k

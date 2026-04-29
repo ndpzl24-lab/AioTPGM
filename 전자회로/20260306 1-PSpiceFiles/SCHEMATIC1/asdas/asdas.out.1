@@ -1,0 +1,67 @@
+
+**** 03/05/26 16:09:40 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-asdas"  [ D:\ORCAD\SPICE\20260306 1-PSpiceFiles\SCHEMATIC1\asdas.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "asdas.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.TRAN  0 50ms 0 10us 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source 20260306 1
+R_R8         N10602 N10610  1m TC=0,0 
+D_D17         B N10704 DI_1N4004 
+I_I2         OUT 0 DC 0.12  
+D_D15         A N10704 DI_1N4004 
+Q_Q2         N10704 N10862 OUT Q2N3904
+D_D22         0 N10862 D1N750 
+X_TX2    N10610 0 A B SCHEMATIC1_TX2 
+V_V7         N10602 0  
++SIN 0 {220*1.414} 60Hz 0 0 0
+R_R7         N10704 N10862  58 TC=0,0 
+D_D14         0 A DI_1N4004 
+R_R4         N10704 0  {R} TC=0,0 
+C_C2         N10704 0  {C}  TC=0,0 
+D_D16         0 B DI_1N4004 
+.PARAM  c=100uf r=1k
+
+.subckt SCHEMATIC1_TX2 1 2 3 4  
+K_TX2         L1_TX2 L2_TX2 1
+L1_TX2         1 2 1mH
+L2_TX2         3 4 1.49uH
+.ends SCHEMATIC1_TX2
+
+**** RESUMING asdas.cir ****
+.END
+
+ERROR(ORPSIM-15113): Model DI_1N4004 used by D_D17 is undefined
+
+ERROR(ORPSIM-15113): Model DI_1N4004 used by D_D15 is undefined
+
+
+ERROR(ORPSIM-15113): Model DI_1N4004 used by D_D14 is undefined
+
+ERROR(ORPSIM-15113): Model DI_1N4004 used by D_D16 is undefined
+

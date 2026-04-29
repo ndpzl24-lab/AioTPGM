@@ -1,0 +1,76 @@
+
+**** 03/13/26 16:32:03 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-ad"  [ D:\ORCAD\SPICE\20260313 test-PSpiceFiles\SCHEMATIC1\ad.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "ad.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+.LIB "../../../mydevice.lib" 
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.TRAN  0 10ms 0 1us 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source 20260313 TEST
+V_V1         N03657 0 5V
+R_R1         N03657 N03669  127 TC=0,0 
+D_D1         N03694 N03706 SCMP13WBC8W1 
+M_M1         N03682 N03686 0 0 2N7002
+R_R2         N03690 N03686  100 TC=0,0 
+U_DSTM1         STIM(1,1) $G_DPWR $G_DGND N03690 IO_STM IO_LEVEL=0 
++ 0 0
++ +.5ms 1
++REPEAT FOREVER
++ +.5ms 0
++  +.5ms 1
++ ENDREPEAT
+D_D2         N03669 N03682 SCMP13WBC8W1 
+D_D3         N03694 N03706 SCMP13WBC8W1 
+
+**** RESUMING ad.cir ****
+.END
+
+
+**** Generated AtoD and DtoA Interfaces ****
+
+*
+* Analog/Digital interface for node N03690
+*
+* Moving U_DSTM1:OUT1 from analog node N03690 to new digital node N03690$DtoA
+X$N03690_DtoA1
++ N03690$DtoA
++ N03690
++ $G_DPWR
++ $G_DGND
++ DtoA_STM
++       PARAMS: DRVH=   0      DRVL=   0      CAPACITANCE=   0     
+*
+* Analog/Digital interface power supply subcircuits
+*
+X$DIGIFPWR 0 DIGIFPWR
+
+
+ERROR(ORPSIM-15142): Node N03694 is floating
+
+ERROR(ORPSIM-15142): Node N03706 is floating
+

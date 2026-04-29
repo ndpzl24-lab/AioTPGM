@@ -1,0 +1,102 @@
+
+**** 01/30/26 14:38:17 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-fasd"  [ d:\orcad\spice\test-PSpiceFiles\SCHEMATIC1\fasd.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "fasd.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.OP
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source TEST
+V_V1         N00258 0 6V
+R_R1         N00258 A  1k TC=0,0 
+R_R2         A C  1k TC=0,0 
+R_R3         0 C  1k TC=0,0 
+R_R4         A B  1k TC=0,0 
+R_R5         0 B  3k TC=0,0 
+R_R6         B 0  3k TC=0,0 
+R_R7         B 0  3k TC=0,0 
+V_V2         N01855 0 0Vdc
+R_R8         N01855 N01946  1k TC=0,0 
+R_R9         0 N01869  1k TC=0,0 
+R_R10         N01946 N01869  2k TC=0,0 
+R_R11         N01946 A  1k TC=0,0 
+R_R12         N01869 B  1k TC=0,0 
+V_VTH         N02770 0 3V
+R_RTH         N02770 N02786  3k TC=0,0 
+I_IN         0 N02882 DC 1mA  
+R_RN         0 N02882  3k TC=0,0 
+R_R14         N02786 0  {R} TC=0,0 
+R_R15         N02882 0  {R} TC=0,0 
+V_V3         A B 0Vdc
+X_U1A         0 A $G_DPWR $G_DGND 7404 PARAMS:
++ IO_LEVEL=0 MNTYMXDLY=0
+R_R16         A 0  {R} TC=0,0 
+R_R18         N04629 0  {R} TC=0,0 
+R_RTH1         N04609 N04619  140.04 TC=0,0 
+R_R17         N04619 0  {R} TC=0,0 
+V_VTH1         N04609 0 3.501V
+R_RN1         0 N04629  140.04 TC=0,0 
+I_IN1         0 N04629 DC 25mA  
+V_V4         0 0 5V
+.PARAM  r=55k
+
+**** RESUMING fasd.cir ****
+.END
+
+
+**** Generated AtoD and DtoA Interfaces ****
+
+*
+* Analog/Digital interface for node 0
+*
+* Moving X_U1A.U1:IN1 from analog node 0 to new digital node 0$AtoD
+X$0_AtoD1
++ 0
++ 0$AtoD
++ $G_DPWR
++ $G_DGND
++ AtoD_STD
++       PARAMS: CAPACITANCE=   0     
+*
+* Analog/Digital interface for node A
+*
+* Moving X_U1A.U1:OUT1 from analog node A to new digital node A$DtoA
+X$A_DtoA1
++ A$DtoA
++ A
++ $G_DPWR
++ $G_DGND
++ DtoA_STD
++       PARAMS: DRVH=  96.4   DRVL= 104    CAPACITANCE=   0     
+*
+* Analog/Digital interface power supply subcircuits
+*
+X$DIGIFPWR 0 DIGIFPWR
+
+
+ERROR(ORPSIM-15143): Voltage source and/or inductor loop involving V_V4. You may break the loop by adding a series resistance
+

@@ -1,0 +1,488 @@
+
+**** 03/09/26 16:41:52 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-assfe"  [ D:\ORCAD\SPICE\20260309-PSpiceFiles\SCHEMATIC1\assfe.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "assfe.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+.LIB "../../../mydevice.lib" 
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.TRAN  0 5ms 0 1us 
+.STEP PARAM rc LIST 370 380 390 400 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source 20260309
+Q_Q1         N00261 N00466 0 Q2N3904
+R_R1         N00265 N00261  1k TC=0,0 
+I_I1         N00293 0 DC {ib}  
+Q_Q2         N00304 N00293 N00265 Q2N3906
+R_R2         N00304 0  1k TC=0,0 
+I_I2         0 N00466 DC {ib}  
+V_V1         N00265 0 5V
+V_V2         N00815 0 5V
+R_R3         N00815 N00871  1k TC=0,0 
+Q_Q3         N00871 N00921 0 Q2N3904
+R_R4         N01063 N00921  86K TC=0,0 
+V_V3         N01063 0 5V
+U_DSTM1         STIM(1,1) $G_DPWR $G_DGND N01633 IO_STM IO_LEVEL=0 
++ 0 0
++ +0.5ms 1
++REPEAT FOREVER
++ +0.5ms 0
++  +0.5ms 1
++ ENDREPEAT
+R_R6         N01633 N01592  86K TC=0,0 
+R_R5         N01472 N01540  1k TC=0,0 
+V_V4         N01472 0 5V
+Q_Q4         N01540 N01592 0 Q2N3904
+V_V5         N01915 0 5V
+R_R7         N01915 N02177  {rc} TC=0,0 
+Q_Q5         N02181 N02077 0 Qmmbt3904tt1
+U_DSTM2         STIM(1,1) $G_DPWR $G_DGND N02071 IO_STM IO_LEVEL=0 
++ 0 0
++ +0.5ms 1
++REPEAT FOREVER
++ +0.5ms 0
++  +0.5ms 1
++ ENDREPEAT
+R_R8         N02071 N02077  {rb} TC=0,0 
+D_D1         N02177 N02181 SCMP13WBC8W1 
+.PARAM  rc=370 rb=10k ib=0
+
+**** RESUMING assfe.cir ****
+.END
+
+
+**** Generated AtoD and DtoA Interfaces ****
+
+*
+* Analog/Digital interface for node N01633
+*
+* Moving U_DSTM1:OUT1 from analog node N01633 to new digital node N01633$DtoA
+X$N01633_DtoA1
++ N01633$DtoA
++ N01633
++ $G_DPWR
++ $G_DGND
++ DtoA_STM
++       PARAMS: DRVH=   0      DRVL=   0      CAPACITANCE=   0     
+*
+* Analog/Digital interface for node N02071
+*
+* Moving U_DSTM2:OUT1 from analog node N02071 to new digital node N02071$DtoA
+X$N02071_DtoA1
++ N02071$DtoA
++ N02071
++ $G_DPWR
++ $G_DGND
++ DtoA_STM
++       PARAMS: DRVH=   0      DRVL=   0      CAPACITANCE=   0     
+*
+* Analog/Digital interface power supply subcircuits
+*
+X$DIGIFPWR 0 DIGIFPWR
+
+
+**** 03/09/26 16:41:52 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-assfe"  [ D:\ORCAD\SPICE\20260309-PSpiceFiles\SCHEMATIC1\assfe.sim ] 
+
+
+ ****     Diode MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               SCMP13WBC8W1    
+          IS  105.900000E-21 
+           N    2.8522       
+         ISR   54.650000E-12 
+          NR   13            
+         IKF  890.100000E-06 
+          BV    5            
+          RS   19.665        
+          TT   17.000000E-09 
+         CJO   25.300000E-12 
+          VJ    5.9662       
+           M     .39441      
+          EG    3.4          
+
+
+**** 03/09/26 16:41:52 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-assfe"  [ D:\ORCAD\SPICE\20260309-PSpiceFiles\SCHEMATIC1\assfe.sim ] 
+
+
+ ****     BJT MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               Qmmbt3904tt1    Q2N3904         Q2N3906         
+               NPN             NPN             PNP             
+       LEVEL    1               1               1            
+          IS  126.532000E-12    6.734000E-15    1.410000E-15 
+          EG    1.05                                         
+          BF  206.302         416.4           180.7          
+          NF    1.5             1               1            
+         VAF    1.000000E+03   74.03           18.7          
+         IKF     .027222         .06678          .08         
+         ISE    2.307710E-09    6.734000E-15                 
+          NE    3.31052         1.259                        
+          BR   20.6302           .7371          4.977        
+          NR    2.89609         1               1            
+         VAR    9.39809                                      
+         IKR     .272221                                     
+         ISC    2.307710E-09                                 
+          NC    1.9876                                       
+         ISS    0               0               0            
+          RB    5.8376         10              10            
+         RBM     .634251                                     
+         IRB   50.3624                                       
+          RE  100.000000E-06    0               0            
+          RC    2.65711         1               2.5          
+         CJE    4.642140E-12    4.493000E-12    8.063000E-12 
+         VJE     .4              .75             .75         
+         MJE     .256227         .2593           .3677       
+         CJC    3.769610E-12    3.638000E-12    9.728000E-12 
+         VJC     .4              .75             .75         
+         MJC     .238109         .3085           .5776       
+        XCJC     .8             1               1            
+         CJS    0               0               0            
+         VJS     .75             .75             .75         
+         MJS     .5                                          
+          FC     .512134                                     
+          TF  419.578000E-12  301.200000E-12  179.300000E-12 
+         XTF     .906167        2               6            
+         VTF    8.75418         4               4            
+         ITF     .010582         .4              .4          
+          TR   68.202300E-09  239.500000E-09   33.420000E-09 
+         XTB     .1             1.5             1.5          
+         XTI    1                                            
+          KF    0               0               0            
+          AF    1               1               1            
+          CN    2.42            2.42            2.2          
+           D     .87             .87             .52         
+
+
+**** 03/09/26 16:41:52 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-assfe"  [ D:\ORCAD\SPICE\20260309-PSpiceFiles\SCHEMATIC1\assfe.sim ] 
+
+
+ ****     Digital Input MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               DINSTM          
+      S0NAME 0               
+       S0TSW  500.000000E-12 
+       S0RLO     .5          
+       S0RHI    1.000000E+03 
+      S1NAME 1               
+       S1TSW  500.000000E-12 
+       S1RLO    1.000000E+03 
+       S1RHI     .5          
+      S2NAME X               
+       S2TSW  500.000000E-12 
+       S2RLO     .429        
+       S2RHI    1.16         
+      S3NAME R               
+       S3TSW  500.000000E-12 
+       S3RLO     .429        
+       S3RHI    1.16         
+      S4NAME F               
+       S4TSW  500.000000E-12 
+       S4RLO     .429        
+       S4RHI    1.16         
+      S5NAME Z               
+       S5TSW  500.000000E-12 
+       S5RLO    1.000000E+06 
+       S5RHI    1.000000E+06 
+
+
+**** 03/09/26 16:41:52 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-assfe"  [ D:\ORCAD\SPICE\20260309-PSpiceFiles\SCHEMATIC1\assfe.sim ] 
+
+
+ ****     Digital IO  MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               IO_STM          
+        DRVL    0            
+        DRVH    0            
+       DtoA1 DtoA_STM        
+       DtoA2 DtoA_STM        
+       DtoA3 DtoA_STM        
+       DtoA4 DtoA_STM        
+       TPWRT  100.000000E+03 
+
+
+**** 03/09/26 16:41:52 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-assfe"  [ D:\ORCAD\SPICE\20260309-PSpiceFiles\SCHEMATIC1\assfe.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     PARAM RC =  370   
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(N00261)    5.0000 (N00265)    5.0000 (N00293)    4.6513 (N00304) 1.267E-06     
+
+(N00466)     .2222 (N00815)    5.0000 (N00871)     .1590 (N00921)     .7088     
+
+(N01063)    5.0000 (N01472)    5.0000 (N01540)    5.0000 (N01592)     .0025     
+
+(N01633)     .0025 (N01915)    5.0000 (N02071)     .0025 (N02077)     .0025     
+
+(N02177)    5.0000 (N02181)    3.6824 ($G_DGND)    0.0000                       
+
+($G_DPWR)    5.0000                   
+
+
+
+ DGTL NODE : STATE  DGTL NODE : STATE  DGTL NODE : STATE  DGTL NODE : STATE
+
+
+(N01633$DtoA) : 0  (N02071$DtoA) : 0  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V1        -1.322E-09
+    V_V2        -4.841E-03
+    V_V3        -4.990E-05
+    V_V4        -1.213E-11
+    V_V5        -2.453E-09
+    X$DIGIFPWR.VDPWR  -1.000E-02
+    X$DIGIFPWR.VDGND  -4.998E-06
+
+    TOTAL POWER DISSIPATION   7.45E-02  WATTS
+
+
+**** 03/09/26 16:41:52 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-assfe"  [ D:\ORCAD\SPICE\20260309-PSpiceFiles\SCHEMATIC1\assfe.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     PARAM RC =  380   
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(N00261)    5.0000 (N00265)    5.0000 (N00293)    4.6513 (N00304) 1.267E-06     
+
+(N00466)     .2222 (N00815)    5.0000 (N00871)     .1590 (N00921)     .7088     
+
+(N01063)    5.0000 (N01472)    5.0000 (N01540)    5.0000 (N01592)     .0025     
+
+(N01633)     .0025 (N01915)    5.0000 (N02071)     .0025 (N02077)     .0025     
+
+(N02177)    5.0000 (N02181)    3.6824 ($G_DGND)    0.0000                       
+
+($G_DPWR)    5.0000                   
+
+
+
+ DGTL NODE : STATE  DGTL NODE : STATE  DGTL NODE : STATE  DGTL NODE : STATE
+
+
+(N01633$DtoA) : 0  (N02071$DtoA) : 0  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V1        -1.322E-09
+    V_V2        -4.841E-03
+    V_V3        -4.990E-05
+    V_V4        -1.213E-11
+    V_V5        -2.453E-09
+    X$DIGIFPWR.VDPWR  -1.000E-02
+    X$DIGIFPWR.VDGND  -4.998E-06
+
+    TOTAL POWER DISSIPATION   7.45E-02  WATTS
+
+
+**** 03/09/26 16:41:52 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-assfe"  [ D:\ORCAD\SPICE\20260309-PSpiceFiles\SCHEMATIC1\assfe.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     PARAM RC =  390   
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(N00261)    5.0000 (N00265)    5.0000 (N00293)    4.6513 (N00304) 1.267E-06     
+
+(N00466)     .2222 (N00815)    5.0000 (N00871)     .1590 (N00921)     .7088     
+
+(N01063)    5.0000 (N01472)    5.0000 (N01540)    5.0000 (N01592)     .0025     
+
+(N01633)     .0025 (N01915)    5.0000 (N02071)     .0025 (N02077)     .0025     
+
+(N02177)    5.0000 (N02181)    3.6824 ($G_DGND)    0.0000                       
+
+($G_DPWR)    5.0000                   
+
+
+
+ DGTL NODE : STATE  DGTL NODE : STATE  DGTL NODE : STATE  DGTL NODE : STATE
+
+
+(N01633$DtoA) : 0  (N02071$DtoA) : 0  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V1        -1.322E-09
+    V_V2        -4.841E-03
+    V_V3        -4.990E-05
+    V_V4        -1.213E-11
+    V_V5        -2.453E-09
+    X$DIGIFPWR.VDPWR  -1.000E-02
+    X$DIGIFPWR.VDGND  -4.998E-06
+
+    TOTAL POWER DISSIPATION   7.45E-02  WATTS
+
+
+**** 03/09/26 16:41:52 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-assfe"  [ D:\ORCAD\SPICE\20260309-PSpiceFiles\SCHEMATIC1\assfe.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+ ****     CURRENT STEP                     PARAM RC =  400   
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(N00261)    5.0000 (N00265)    5.0000 (N00293)    4.6513 (N00304) 1.267E-06     
+
+(N00466)     .2222 (N00815)    5.0000 (N00871)     .1590 (N00921)     .7088     
+
+(N01063)    5.0000 (N01472)    5.0000 (N01540)    5.0000 (N01592)     .0025     
+
+(N01633)     .0025 (N01915)    5.0000 (N02071)     .0025 (N02077)     .0025     
+
+(N02177)    5.0000 (N02181)    3.6824 ($G_DGND)    0.0000                       
+
+($G_DPWR)    5.0000                   
+
+
+
+ DGTL NODE : STATE  DGTL NODE : STATE  DGTL NODE : STATE  DGTL NODE : STATE
+
+
+(N01633$DtoA) : 0  (N02071$DtoA) : 0  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V1        -1.322E-09
+    V_V2        -4.841E-03
+    V_V3        -4.990E-05
+    V_V4        -1.213E-11
+    V_V5        -2.453E-09
+    X$DIGIFPWR.VDPWR  -1.000E-02
+    X$DIGIFPWR.VDGND  -4.998E-06
+
+    TOTAL POWER DISSIPATION   7.45E-02  WATTS
+
+
+
+          JOB CONCLUDED
+
+**** 03/09/26 16:41:52 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-assfe"  [ D:\ORCAD\SPICE\20260309-PSpiceFiles\SCHEMATIC1\assfe.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+ ****     CURRENT STEP                     PARAM RC =  400   
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =        1.48
+

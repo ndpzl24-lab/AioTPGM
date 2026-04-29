@@ -1,0 +1,66 @@
+
+**** 03/16/26 14:23:59 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-wd"  [ D:\ORCAD\SPICE\20260316 1-PSpiceFiles\SCHEMATIC1\wd.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "wd.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.TRAN  0 5ms 0 1us 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source 20260316 1
+R_R11         N03872 N03748  1k TC=0,0 
+V_V6         N03964 0 6V
+C_C1         N03860 N03872  1u  TC=0,0 
+R_R10         N03748 N03758  2K TC=0,0 
+X_U2C         N03964 N03748 VCC 0 N03758 LM324
+V_V5         N03860 0  
++SIN 0V 1V 1kHz 0 0 0
+R_R12         N03908 0  10K TC=0,0 
+C_C2         N03758 N03908  1u  TC=0,0 
+R_R14         EI N05142  1K TC=0,0 
+R_R15         N05298 0  10K TC=0,0 
+R_R13         N05142 N05152  2K TC=0,0 
+X_U3B         N05346 N05142 VCC 0 N05152 LM324
+C_C4         N05152 N05298  1u  TC=0,0 
+C_C3         IN N05346  1u  TC=0,0 
+R_R16         N05346 N05505  1k TC=0,0 
+V_V8         N05505 0 0Vdc
+V_V4         EI 0  
++SIN 0V 1V 1kHz 0 0 0
+V_V3         VCC 0 12V
+V_V2         VEE 0 -12V
+V_V9         EI 0  
++SIN 0V 1V 1kHz 0 0 0
+
+**** RESUMING wd.cir ****
+.END
+
+ERROR(ORPSIM-15141): Less than 2 connections at node IN.
+
+ERROR(ORPSIM-15142): Node IN is floating
+
+ERROR(ORPSIM-15143): Voltage source and/or inductor loop involving V_V9. You may break the loop by adding a series resistance
+

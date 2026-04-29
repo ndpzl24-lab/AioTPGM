@@ -1,0 +1,245 @@
+#-----------------------------------------------------------
+# Vivado v2025.2.1 (64-bit)
+# SW Build 6403652 on Thu Mar 19 19:48:24 GMT 2026
+# IP Build 6403511 on Thu Mar 19 12:41:45 MDT 2026
+# SharedData Build 6403650 on Thu Mar 19 14:02:13 MDT 2026
+# Start of session at: Thu Apr  9 12:54:50 2026
+# Process ID         : 15848
+# Current directory  : D:/Verilog/0409/oneshotautoshift/oneshotautoshift.runs/synth_1
+# Command line       : vivado.exe -log oneshotautoshift.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source oneshotautoshift.tcl
+# Log file           : D:/Verilog/0409/oneshotautoshift/oneshotautoshift.runs/synth_1/oneshotautoshift.vds
+# Journal file       : D:/Verilog/0409/oneshotautoshift/oneshotautoshift.runs/synth_1\vivado.jou
+# Running On         : DESKTOP-Q1F9NDB
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : 12th Gen Intel(R) Core(TM) i3-1215U
+# CPU Frequency      : 2496 MHz
+# CPU Physical cores : 6
+# CPU Logical cores  : 8
+# Host memory        : 16856 MB
+# Swap memory        : 2080 MB
+# Total Virtual      : 18936 MB
+# Available Virtual  : 8587 MB
+#-----------------------------------------------------------
+source oneshotautoshift.tcl -notrace
+create_project: Time (s): cpu = 00:00:14 ; elapsed = 00:00:09 . Memory (MB): peak = 573.012 ; gain = 258.184
+Command: read_checkpoint -auto_incremental -incremental D:/Verilog/0409/oneshotautoshift/oneshotautoshift.srcs/utils_1/imports/synth_1/oneshotautoshift.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from D:/Verilog/0409/oneshotautoshift/oneshotautoshift.srcs/utils_1/imports/synth_1/oneshotautoshift.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top oneshotautoshift -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 5864
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1307.746 ; gain = 541.336
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'oneshotautoshift' [D:/Verilog/0409/oneshotautoshift/oneshotautoshift.srcs/sources_1/new/oneshotautoshift.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'oneshotautoshift' (0#1) [D:/Verilog/0409/oneshotautoshift/oneshotautoshift.srcs/sources_1/new/oneshotautoshift.v:9]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:32 . Memory (MB): peak = 1426.062 ; gain = 659.652
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:32 . Memory (MB): peak = 1426.062 ; gain = 659.652
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:32 . Memory (MB): peak = 1426.062 ; gain = 659.652
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1426.062 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [D:/Verilog/0409/oneshotautoshift/oneshotautoshift.xdc]
+Finished Parsing XDC File [D:/Verilog/0409/oneshotautoshift/oneshotautoshift.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/Verilog/0409/oneshotautoshift/oneshotautoshift.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/oneshotautoshift_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/oneshotautoshift_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1467.969 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 1467.969 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:54 . Memory (MB): peak = 1467.969 ; gain = 701.559
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:54 . Memory (MB): peak = 1467.969 ; gain = 701.559
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:54 . Memory (MB): peak = 1467.969 ; gain = 701.559
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:01:02 . Memory (MB): peak = 1467.969 ; gain = 701.559
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   20 Bit       Adders := 2     
++---Registers : 
+	               20 Bit    Registers := 2     
+	                8 Bit    Registers := 1     
+	                2 Bit    Registers := 3     
+	                1 Bit    Registers := 5     
++---Muxes : 
+	   2 Input   20 Bit        Muxes := 4     
+	   3 Input    8 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 1     
+	   3 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:01:09 . Memory (MB): peak = 1476.234 ; gain = 709.824
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:30 ; elapsed = 00:01:17 . Memory (MB): peak = 1623.391 ; gain = 856.980
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:01:17 . Memory (MB): peak = 1645.852 ; gain = 879.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:30 ; elapsed = 00:01:17 . Memory (MB): peak = 1645.852 ; gain = 879.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:37 ; elapsed = 00:01:23 . Memory (MB): peak = 1884.047 ; gain = 1117.637
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:37 ; elapsed = 00:01:23 . Memory (MB): peak = 1884.047 ; gain = 1117.637
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:37 ; elapsed = 00:01:23 . Memory (MB): peak = 1884.047 ; gain = 1117.637
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:37 ; elapsed = 00:01:23 . Memory (MB): peak = 1884.047 ; gain = 1117.637
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:37 ; elapsed = 00:01:23 . Memory (MB): peak = 1884.047 ; gain = 1117.637
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:37 ; elapsed = 00:01:23 . Memory (MB): peak = 1884.047 ; gain = 1117.637
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    17|
+|3     |LUT2   |    43|
+|4     |LUT3   |    11|
+|5     |LUT4   |     8|
+|6     |LUT5   |    10|
+|7     |LUT6   |    28|
+|8     |FDCE   |    85|
+|9     |FDPE   |     1|
+|10    |IBUF   |     4|
+|11    |OBUF   |     8|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:37 ; elapsed = 00:01:24 . Memory (MB): peak = 1884.047 ; gain = 1117.637
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:27 ; elapsed = 00:01:21 . Memory (MB): peak = 1884.047 ; gain = 1075.730
+Synthesis Optimization Complete : Time (s): cpu = 00:00:37 ; elapsed = 00:01:24 . Memory (MB): peak = 1884.047 ; gain = 1117.637
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1893.199 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 17 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1896.902 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 4f9182f3
+INFO: [Common 17-83] Releasing license: Synthesis
+23 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:41 ; elapsed = 00:01:31 . Memory (MB): peak = 1896.902 ; gain = 1317.816
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1896.902 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'D:/Verilog/0409/oneshotautoshift/oneshotautoshift.runs/synth_1/oneshotautoshift.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:00 ; elapsed = 00:00:07 . Memory (MB): peak = 1896.902 ; gain = 0.000
+INFO: [Vivado 12-24828] Executing command : report_utilization -file oneshotautoshift_utilization_synth.rpt -pb oneshotautoshift_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Apr  9 12:56:43 2026...

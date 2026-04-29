@@ -1,0 +1,102 @@
+# =====================================
+# Vivado / FPGA
+# =====================================
+
+# Build / temp
+.cache/
+.hw/
+.ip_user_files/
+.runs/
+.sim/
+.Xil/
+xsim.dir/
+
+# Logs / reports
+*.jou
+*.log
+*.str
+
+# Generated output
+*.bit
+*.bin
+*.ltx
+*.dcp
+*.wdb
+
+# User files
+*.xpr.user
+
+# =====================================
+# STM32 / Embedded
+# =====================================
+
+Debug/
+Release/
+build/
+.build/
+
+*.o
+*.obj
+*.elf
+*.axf
+*.map
+*.hex
+*.bin
+*.d
+*.dep
+
+# Keil / IDE
+*.uvgui.*
+*.uvoptx
+*.bak
+
+# =====================================
+# Python
+# =====================================
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+venv/
+.venv/
+env/
+
+.ipynb_checkpoints/
+
+# =====================================
+# Large documents / media
+# =====================================
+
+*.zip
+*.7z
+*.rar
+*.iso
+
+*.pdf
+*.ppt
+*.pptx
+
+*.avi
+*.mp4
+*.mov
+*.wav
+*.mp3
+
+# =====================================
+# OS / Editor
+# =====================================
+
+Thumbs.db
+.DS_Store
+
+.vscode/
+.idea/
+
+# =====================================
+# Optional: ignore all logs
+# =====================================
+
+*.tmp
+*.temp

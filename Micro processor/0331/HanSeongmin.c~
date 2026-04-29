@@ -1,0 +1,137 @@
+/* M24C08 */
+
+#include <mega128a.h>
+#include <delay.h>
+
+#define SCL_OUT     DDRD |= 0x01    // PD.0 OUT
+#define SDA_OUT        DDRD |= 0x02    // PD.1 OUT
+#define SDA_IN      DDRD &= 0xFD    // PD.1 IN
+
+#define CLK_HIGH    PORTD |= 0x01   // PD.0=1
+#define CLK_LOW     PORTD &= 0xFE   // PD.0=0
+
+#define DAT_HIGH    PORTD |= 0x02   // PD.1=1
+#define DAT_LOW     PORTD &= 0xFD   // PD.1=0
+
+typedef unsigned char U8;
+
+U8 DEV_ADD_W = 0xA0;
+U8 DEV_ADD_R = 0xA1;
+U8 IIC_ADD = 0x5A;
+U8 IIC_DAT = 0x50;
+U8 READ_DATA = 0;
+
+
+
+void IIC_START(void);
+void IIC_STOP(void);
+void ACK_write(void);
+void no_ACK(void);
+void ACK_read(void);
+void Process_8data(U8 value);
+void Process_8data_read(void);
+void Byte_write(void);
+//void Page_write(void);
+void Random_read(void);
+void Byte_write_B(U8 ADD_B, U8 DAT_B);
+
+void main(void)           
+{
+    DDRC=0xFF;    PORTC=0xAA;
+    
+    SCL_OUT;    SDA_OUT;                             
+    
+    while(1){
+        Byte_write_B(0x77,0x99);
+    //    Page_write();
+        delay_ms(5);
+    }
+}
+
+void IIC_START(void)
+{
+    DAT_HIGH;
+    CLK_HIGH;
+    delay_us(3);
+    DAT_LOW;
+    delay_us(3);
+    CLK_LOW;
+    delay_us(5);
+}
+
+void IIC_STOP(void)
+{
+    DAT_LOW;
+    CLK_HIGH;
+    delay_us(3);
+    DAT_HIGH;
+    delay_us(3);
+    CLK_LOW;
+    delay_ms(5);
+}
+
+void Process_8data(U8 value)
+{
+    U8 i_8bit;
+    U8 value_buffer;
+    
+    value_buffer=value;
+    for(i_8bit=0;i_8bit<8;i_8bit++)
+    {
+        if((value_buffer&0x80)==0x80)
+            DAT_HIGH;
+        else
+            DAT_LOW;
+       
+         delay_us(1);   
+        CLK_HIGH;
+        delay_us(5);
+        CLK_LOW;  
+        delay_us(4);
+        value_buffer<<=1;
+    }
+}
+
+void ACK_write(void){
+    U8 i = 0;                                
+
+    SDA_IN;                                  
+    CLK_HIGH;                                
+    for(i=10;i>0;i--){                        
+        if((PIND & 0x02) == 0x00){i=1;
+        PORTC=0xf1;
+        }
+        else PORTC=0x00;                     // NACK 받았다면  LED 다 켜 
+    }
+    delay_us(5);
+    CLK_LOW;        
+    SDA_OUT;                                
+    delay_us(5);      
+}    
+
+void Byte_write(void){
+    IIC_START();    
+    Process_8data(DEV_ADD_W);
+    ACK_write();
+    Process_8data(IIC_ADD);
+    ACK_write();
+    Process_8data(IIC_DAT);        
+    ACK_write();        
+    IIC_STOP();    
+}    
+
+void Byte_write_B(U8 ADD_B, U8 DAT_B){
+    IIC_START();    
+    Process_8data(DEV_ADD_W);
+    ACK_write();
+    Process_8data(IIC_ADD);
+    ACK_write();
+    Process_8data(IIC_DAT);        
+    ACK_write();     
+    Process_8data(ADD_B);
+    ACK_write();
+    Process_8data(DAT_B);        
+    ACK_write();        
+    IIC_STOP();    
+}    
+

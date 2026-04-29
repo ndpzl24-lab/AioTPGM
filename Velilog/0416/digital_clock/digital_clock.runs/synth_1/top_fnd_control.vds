@@ -1,0 +1,304 @@
+#-----------------------------------------------------------
+# Vivado v2025.2.1 (64-bit)
+# SW Build 6403652 on Thu Mar 19 19:48:24 GMT 2026
+# IP Build 6403511 on Thu Mar 19 12:41:45 MDT 2026
+# SharedData Build 6403650 on Thu Mar 19 14:02:13 MDT 2026
+# Start of session at: Fri Apr 17 16:41:29 2026
+# Process ID         : 3740
+# Current directory  : C:/AIOT/Verilog/0416/digital_clock/digital_clock.runs/synth_1
+# Command line       : vivado.exe -log top_fnd_control.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_fnd_control.tcl
+# Log file           : C:/AIOT/Verilog/0416/digital_clock/digital_clock.runs/synth_1/top_fnd_control.vds
+# Journal file       : C:/AIOT/Verilog/0416/digital_clock/digital_clock.runs/synth_1\vivado.jou
+# Running On         : DESKTOP-Q1F9NDB
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : 12th Gen Intel(R) Core(TM) i3-1215U
+# CPU Frequency      : 2496 MHz
+# CPU Physical cores : 6
+# CPU Logical cores  : 8
+# Host memory        : 16856 MB
+# Swap memory        : 2147 MB
+# Total Virtual      : 19003 MB
+# Available Virtual  : 6461 MB
+#-----------------------------------------------------------
+source top_fnd_control.tcl -notrace
+create_project: Time (s): cpu = 00:00:17 ; elapsed = 00:00:12 . Memory (MB): peak = 572.238 ; gain = 256.473
+Command: read_checkpoint -auto_incremental -incremental C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/utils_1/imports/synth_1/top_fndcontrol.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/utils_1/imports/synth_1/top_fndcontrol.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top top_fnd_control -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 14932
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1308.703 ; gain = 541.199
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'top_fnd_control' [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/top_fndcontrol.v:3]
+INFO: [Synth 8-6157] synthesizing module 'MasterSelect' [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/MasterSelect.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'MasterSelect' (0#1) [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/MasterSelect.v:3]
+INFO: [Synth 8-6157] synthesizing module 'DigitalClock' [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/DigitalClock.v:3]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/DigitalClock.v:64]
+INFO: [Synth 8-6155] done synthesizing module 'DigitalClock' (0#1) [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/DigitalClock.v:3]
+INFO: [Synth 8-6157] synthesizing module 'FND_Display' [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/FNDDisplay.v:10]
+INFO: [Synth 8-6155] done synthesizing module 'FND_Display' (0#1) [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/FNDDisplay.v:10]
+INFO: [Synth 8-6157] synthesizing module 'ClockDevider' [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/clockdivider_paramM.v:10]
+	Parameter N bound to: 100000 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ClockDevider' (0#1) [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/clockdivider_paramM.v:10]
+INFO: [Synth 8-6157] synthesizing module 'Counter' [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/counter.v:10]
+INFO: [Synth 8-6155] done synthesizing module 'Counter' (0#1) [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/counter.v:10]
+INFO: [Synth 8-6157] synthesizing module 'DataMux' [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/datamux.v:10]
+INFO: [Synth 8-6155] done synthesizing module 'DataMux' (0#1) [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/datamux.v:10]
+INFO: [Synth 8-6157] synthesizing module 'Mux4x1' [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/mux4x1.v:10]
+INFO: [Synth 8-226] default block is never used [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/mux4x1.v:16]
+INFO: [Synth 8-6155] done synthesizing module 'Mux4x1' (0#1) [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/mux4x1.v:10]
+INFO: [Synth 8-6157] synthesizing module 'FND_Decoder' [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/FNDdecoder.v:10]
+INFO: [Synth 8-6155] done synthesizing module 'FND_Decoder' (0#1) [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/FNDdecoder.v:10]
+INFO: [Synth 8-6157] synthesizing module 'ClockDevider__parameterized0' [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/clockdivider_paramM.v:10]
+	Parameter N bound to: 100000000 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ClockDevider__parameterized0' (0#1) [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/clockdivider_paramM.v:10]
+INFO: [Synth 8-6157] synthesizing module 'Timer' [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/Timer.v:10]
+INFO: [Synth 8-6155] done synthesizing module 'Timer' (0#1) [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/Timer.v:10]
+INFO: [Synth 8-6157] synthesizing module 'AlarmLogic' [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/AlarmLogic.v:3]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/AlarmLogic.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'AlarmLogic' (0#1) [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/AlarmLogic.v:3]
+INFO: [Synth 8-6157] synthesizing module 'ClockDevider__parameterized1' [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/clockdivider_paramM.v:10]
+	Parameter N bound to: 1000000 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ClockDevider__parameterized1' (0#1) [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/clockdivider_paramM.v:10]
+INFO: [Synth 8-6155] done synthesizing module 'top_fnd_control' (0#1) [C:/AIOT/Verilog/0416/digital_clock/digital_clock.srcs/sources_1/new/top_fndcontrol.v:3]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1430.047 ; gain = 662.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1430.047 ; gain = 662.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1430.047 ; gain = 662.543
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1430.047 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/AIOT/Verilog/0416/digital_clock/digital_clock.xdc]
+Finished Parsing XDC File [C:/AIOT/Verilog/0416/digital_clock/digital_clock.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/AIOT/Verilog/0416/digital_clock/digital_clock.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_fnd_control_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/top_fnd_control_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1499.031 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 1499.031 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:24 ; elapsed = 00:00:27 . Memory (MB): peak = 1499.031 ; gain = 731.527
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:24 ; elapsed = 00:00:27 . Memory (MB): peak = 1499.031 ; gain = 731.527
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:27 . Memory (MB): peak = 1499.031 ; gain = 731.527
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'set_pos_reg' in module 'MasterSelect'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                              100 |                              100
+                 iSTATE0 |                              010 |                              010
+                 iSTATE1 |                              001 |                              001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'set_pos_reg' using encoding 'one-hot' in module 'MasterSelect'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:25 ; elapsed = 00:00:28 . Memory (MB): peak = 1499.031 ; gain = 731.527
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   30 Bit       Adders := 3     
+	   2 Input   20 Bit       Adders := 1     
+	   2 Input   18 Bit       Adders := 2     
+	   2 Input    7 Bit       Adders := 1     
+	   2 Input    6 Bit       Adders := 6     
+	   2 Input    5 Bit       Adders := 2     
+	   2 Input    2 Bit       Adders := 2     
++---Registers : 
+	               30 Bit    Registers := 3     
+	               20 Bit    Registers := 3     
+	                7 Bit    Registers := 1     
+	                6 Bit    Registers := 6     
+	                5 Bit    Registers := 2     
+	                3 Bit    Registers := 2     
+	                2 Bit    Registers := 5     
+	                1 Bit    Registers := 12    
++---Muxes : 
+	   2 Input   20 Bit        Muxes := 2     
+	   2 Input   18 Bit        Muxes := 4     
+	   2 Input    7 Bit        Muxes := 1     
+	   2 Input    6 Bit        Muxes := 2     
+	   2 Input    5 Bit        Muxes := 2     
+	   3 Input    4 Bit        Muxes := 4     
+	   4 Input    4 Bit        Muxes := 3     
+	   2 Input    4 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 2     
+	   3 Input    3 Bit        Muxes := 2     
+	   5 Input    1 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 6     
+	   4 Input    1 Bit        Muxes := 4     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:38 ; elapsed = 00:00:42 . Memory (MB): peak = 1594.617 ; gain = 827.113
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:48 ; elapsed = 00:00:53 . Memory (MB): peak = 1635.984 ; gain = 868.480
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:53 . Memory (MB): peak = 1657.852 ; gain = 890.348
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:48 ; elapsed = 00:00:53 . Memory (MB): peak = 1660.066 ; gain = 892.562
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:55 ; elapsed = 00:01:01 . Memory (MB): peak = 1895.945 ; gain = 1128.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:55 ; elapsed = 00:01:01 . Memory (MB): peak = 1895.945 ; gain = 1128.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:55 ; elapsed = 00:01:01 . Memory (MB): peak = 1895.945 ; gain = 1128.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:55 ; elapsed = 00:01:01 . Memory (MB): peak = 1895.945 ; gain = 1128.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:55 ; elapsed = 00:01:01 . Memory (MB): peak = 1895.945 ; gain = 1128.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:55 ; elapsed = 00:01:01 . Memory (MB): peak = 1895.945 ; gain = 1128.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    39|
+|3     |LUT1   |    10|
+|4     |LUT2   |    22|
+|5     |LUT3   |    23|
+|6     |LUT4   |   185|
+|7     |LUT5   |    59|
+|8     |LUT6   |    71|
+|9     |MUXF7  |     4|
+|10    |FDCE   |   217|
+|11    |FDPE   |     1|
+|12    |FDRE   |     6|
+|13    |IBUF   |     7|
+|14    |OBUF   |    22|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:55 ; elapsed = 00:01:01 . Memory (MB): peak = 1895.945 ; gain = 1128.441
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:42 ; elapsed = 00:00:57 . Memory (MB): peak = 1895.945 ; gain = 1059.457
+Synthesis Optimization Complete : Time (s): cpu = 00:00:55 ; elapsed = 00:01:01 . Memory (MB): peak = 1895.945 ; gain = 1128.441
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1905.109 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 43 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1908.812 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: ccd72db
+INFO: [Common 17-83] Releasing license: Synthesis
+52 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:01 ; elapsed = 00:01:10 . Memory (MB): peak = 1908.812 ; gain = 1329.152
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1908.812 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/AIOT/Verilog/0416/digital_clock/digital_clock.runs/synth_1/top_fnd_control.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file top_fnd_control_utilization_synth.rpt -pb top_fnd_control_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Apr 17 16:42:56 2026...

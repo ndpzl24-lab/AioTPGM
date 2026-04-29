@@ -1,0 +1,124 @@
+
+**** 01/30/26 14:13:25 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-sfsf"  [ d:\orcad\spice\test-PSpiceFiles\SCHEMATIC1\sfsf.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "sfsf.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.OP
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source TEST
+V_V1         N00258 0 6V
+R_R1         N00258 A  1k TC=0,0 
+R_R2         A C  1k TC=0,0 
+R_R3         0 C  1k TC=0,0 
+R_R4         A B  1k TC=0,0 
+R_R5         0 B  3k TC=0,0 
+R_R6         B 0  3k TC=0,0 
+R_R7         B 0  3k TC=0,0 
+V_V2         N01855 0 0Vdc
+R_R8         N01855 N01946  1k TC=0,0 
+R_R9         0 N01869  1k TC=0,0 
+R_R10         N01946 N01869  2k TC=0,0 
+R_R11         N01946 A  1k TC=0,0 
+R_R12         N01869 B  1k TC=0,0 
+V_VTH         N02770 0 3V
+R_RTH         N02770 N02786  3k TC=0,0 
+I_IN         0 N02882 DC 1mA  
+R_RN         0 N02882  3k TC=0,0 
+R_R14         N02786 0  {R} TC=0,0 
+R_R15         N02882 0  {R} TC=0,0 
+V_V3         A B 0Vdc
+.PARAM  r=47k
+
+**** RESUMING sfsf.cir ****
+.END
+
+**** 01/30/26 14:13:25 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-sfsf"  [ d:\orcad\spice\test-PSpiceFiles\SCHEMATIC1\sfsf.sim ] 
+
+
+ ****     SMALL SIGNAL BIAS SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(    A)    1.7143  (    B)    1.7143  (    C)     .8571  (N00258)    6.0000     
+
+(N01855)    0.0000 (N01869)     .8571 (N01946)     .8571 (N02770)    3.0000     
+
+(N02786)    2.8200 (N02882)    2.8200 
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V1        -4.286E-03
+    V_V2         8.571E-04
+    V_VTH       -6.000E-05
+    V_V3         2.571E-03
+
+    TOTAL POWER DISSIPATION   2.59E-02  WATTS
+
+
+**** 01/30/26 14:13:25 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-sfsf"  [ d:\orcad\spice\test-PSpiceFiles\SCHEMATIC1\sfsf.sim ] 
+
+
+ ****     OPERATING POINT INFORMATION      TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+
+
+          JOB CONCLUDED
+
+**** 01/30/26 14:13:25 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-sfsf"  [ d:\orcad\spice\test-PSpiceFiles\SCHEMATIC1\sfsf.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =        0.00
+

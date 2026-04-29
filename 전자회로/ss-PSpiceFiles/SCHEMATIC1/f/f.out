@@ -1,0 +1,95 @@
+
+**** 03/04/26 11:55:22 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-f"  [ D:\ORCAD\SPICE\ss-PSpiceFiles\SCHEMATIC1\f.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "f.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.TRAN  0 6ms  0 1us 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source SS
+L_L1         N00098 N00105  {L}  
+C_C1         N00105 0  {C}  TC=0,0 
+V_V1         N00098 0  
++PULSE 0V 5V 0s 1ns 1ns 1ms 2ms
+C_C2         N00495 0  {C}  TC=0,0 
+L_L2         N00631 N00495  {L}  
+V_V2         N00485 0  
++PULSE 0V 5V 0s 1ns 1ns 1ms 2ms
+R_R1         N00485 N00631  1 TC=0,0 
+.PARAM  l=0.1uh c=0.1uf
+
+**** RESUMING f.cir ****
+.END
+
+**** 03/04/26 11:55:22 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-f"  [ D:\ORCAD\SPICE\ss-PSpiceFiles\SCHEMATIC1\f.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(N00098)    0.0000 (N00105)    0.0000 (N00485)    0.0000 (N00495)    0.0000     
+
+(N00631)    0.0000 
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V1         0.000E+00
+    V_V2         0.000E+00
+
+    TOTAL POWER DISSIPATION   0.00E+00  WATTS
+
+
+
+          JOB CONCLUDED
+
+**** 03/04/26 11:55:22 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-f"  [ D:\ORCAD\SPICE\ss-PSpiceFiles\SCHEMATIC1\f.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =         .08
+

@@ -1,0 +1,15 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../../../../AMDDesignTools/2025.2.1/Vivado/data/rsb/busdef" \
+"../../../../Create_memory.gen/sources_1/ip/spram6/sim/spram6.v" \
+"../../../../Create_memory.gen/sources_1/ip/spram5/sim/spram5.v" \
+"../../../../Create_memory.gen/sources_1/ip/spram4/sim/spram4.v" \
+"../../../../Create_memory.gen/sources_1/ip/spram3/sim/spram3.v" \
+"../../../../Create_memory.gen/sources_1/ip/spram2/sim/spram2.v" \
+"../../../../Create_memory.gen/sources_1/ip/spram1/sim/spram1.v" \
+"../../../../Create_memory.srcs/sim_1/new/spram_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

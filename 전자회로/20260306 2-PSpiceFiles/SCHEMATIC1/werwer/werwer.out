@@ -1,0 +1,159 @@
+
+**** 03/05/26 16:50:32 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-werwer"  [ D:\ORCAD\SPICE\20260306 2-PSpiceFiles\SCHEMATIC1\werwer.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "werwer.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.TRAN  0 2ms 0 1u 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source 20260306 2
+L_L1         N00143 N00150  47mH  
+R_R1         N00150 N00183  270 TC=0,0 
+V_V1         N00143 0 12V
+X_U1         N00183 0 Sw_tOpen PARAMS: tOpen=1ms ttran=1u Rclosed=0.01
++  Ropen=1Meg
+X_U2         N00591 0 Sw_tOpen PARAMS: tOpen=1ms ttran=1u Rclosed=0.01
++  Ropen=1Meg
+L_L2         N00575 N00585  47mH  
+R_R2         N00585 N00591  270 TC=0,0 
+V_V2         N00575 0 12V
+D_D1         N00591 N00575 D1N4148 
+L_L3         N00968 N00978  47mH  
+X_U3         N00984 0 Sw_tOpen PARAMS: tOpen=1ms ttran=1u Rclosed=0.01
++  Ropen=1Meg
+V_V3         N00968 0 12V
+R_R3         N00978 N00984  270 TC=0,0 
+R_R4         N00968 N01145  270 TC=0,0 
+C_C1         N01145 N00984  {C}  TC=0,0 
+.PARAM  c=0.6u
+
+**** RESUMING werwer.cir ****
+.END
+
+**** 03/05/26 16:50:32 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-werwer"  [ D:\ORCAD\SPICE\20260306 2-PSpiceFiles\SCHEMATIC1\werwer.sim ] 
+
+
+ ****     Diode MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               D1N4148         
+          IS    2.682000E-09 
+           N    1.836        
+         ISR    1.565000E-09 
+         IKF     .04417      
+          BV  100            
+         IBV  100.000000E-06 
+          RS     .5664       
+          TT   11.540000E-09 
+         CJO    4.000000E-12 
+          VJ     .5          
+           M     .3333       
+
+
+**** 03/05/26 16:50:32 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-werwer"  [ D:\ORCAD\SPICE\20260306 2-PSpiceFiles\SCHEMATIC1\werwer.sim ] 
+
+
+ ****     Voltage Controlled Switch MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U1.Smod       X_U2.Smod       X_U3.Smod       
+         RON     .01             .01             .01         
+        ROFF    1.000000E+06    1.000000E+06    1.000000E+06 
+         VON    1               1               1            
+        VOFF    0               0               0            
+
+
+**** 03/05/26 16:50:32 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-werwer"  [ D:\ORCAD\SPICE\20260306 2-PSpiceFiles\SCHEMATIC1\werwer.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(N00143)   12.0000 (N00150)   12.0000 (N00183) 444.4E-06 (N00575)   12.0000     
+
+(N00585)   12.0000 (N00591) 444.4E-06 (N00968)   12.0000 (N00978)   12.0000     
+
+(N00984) 444.4E-06 (N01145)   12.0000 (X_U1.3)    1.0000 (X_U2.3)    1.0000     
+
+(X_U3.3)    1.0000 
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V1        -4.444E-02
+    V_V2        -4.444E-02
+    V_V3        -4.444E-02
+    X_U1.V1     -1.000E-12
+    X_U2.V1     -1.000E-12
+    X_U3.V1     -1.000E-12
+
+    TOTAL POWER DISSIPATION   1.60E+00  WATTS
+
+
+
+          JOB CONCLUDED
+
+**** 03/05/26 16:50:32 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-werwer"  [ D:\ORCAD\SPICE\20260306 2-PSpiceFiles\SCHEMATIC1\werwer.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =         .19
+

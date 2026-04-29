@@ -1,0 +1,17 @@
+/*
+ * timer3.c
+ *
+ * Created: 2026-04-13 ¿ÀÀü 9:12:30
+ * Author: ¼º¹Î
+ */
+
+#include <mega128.h>
+
+void main(void)
+{
+while (1)
+    {
+    // Please write your application code here
+
+    }
+}

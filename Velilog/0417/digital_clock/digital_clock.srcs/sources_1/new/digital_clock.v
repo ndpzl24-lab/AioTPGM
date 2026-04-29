@@ -1,0 +1,705 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+
+// Create Date: 2026/04/17 16:46:46
+
+// Module Name: digital_clock
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module top_fnd_control(
+    input clk, reset, time_mode, sw0,sw1,sw2,sw3,
+    output [1:0] mode_out,
+    output [2:0] set_pos_out, alarm_out, alarm_on,
+    output [3:0] fndsel,
+    output [6:0] fnd
+);
+
+wire w_clkout, w_clk_out, w_clkout2;
+wire [1:0] out_counter;
+wire [3:0] fndin, hour10, hour0, min10, min0, sec10, sec0;
+wire [4:0] hour_out, w_a_hour_out;
+wire [5:0] min_out, sec_out, w_t_sec_out, w_t_min_out, w_a_sec_out, w_a_min_out;
+wire [6:0] w_t_mmsec_out;
+
+MasterSelect U0(.clk(clk), 
+                .reset(reset), 
+                .sw0(sw0), 
+                .mode_out(mode_out), 
+                .sw1(sw1), 
+                .set_pos_out(set_pos_out)
+                );
+                
+DigitalClock U1(.reset(reset), 
+                .clk(clk), 
+                .clk1Hz(w_clk_out), 
+                .mode(mode_out), 
+                .set_pos(set_pos_out), 
+                .sw2(sw2), 
+                .sec_out(sec_out), 
+                .min_out(min_out), 
+                .hour_out(hour_out)
+                );
+                
+FND_Display U2(.mode(mode_out), 
+               .sec_in(sec_out), 
+               .min_in(min_out), 
+               .hour_in(hour_out), 
+               .hour10(hour10), .hour0(hour0), 
+               .min10(min10), 
+               .min0(min0), 
+               .sec10(sec10), 
+               .sec0(sec0), 
+               .tl_mmsec(w_t_mmsec_out), 
+               .tl_sec(w_t_sec_out), 
+               .tl_min(w_t_min_out), 
+               .al_sec(w_a_sec_out),
+               .al_min(w_a_min_out), 
+               .al_hour(w_a_hour_out
+               ));
+               
+ClockDevider #(.N(100_000)) U3(.clk(clk), 
+                               .reset(reset), 
+                               .clk_out(w_clkout));   //1ms, 1000Hz
+                               
+Counter U4(.inclk(w_clkout), 
+           .reset(reset), 
+           .out_counter(out_counter)
+           );
+           
+DataMux U5(.time_mode(time_mode), 
+           .ina(sec0), 
+           .inb(sec10), 
+           .inc(min0), 
+           .ind(min10), 
+           .ine(hour0), 
+           .inf(hour10), 
+           .insel(out_counter), 
+           .outy(fndin)
+           );
+           
+Mux4x1 U6(.sel_in(out_counter), 
+          .fndsel(fndsel)
+          );
+          
+FND_Decoder U7(.fndin(fndin), 
+               .fnd(fnd));
+               
+ClockDevider #(.N(100_000_000)) U8(.clk(clk), 
+                                   .reset(reset), 
+                                   .clk_out(w_clk_out)
+                                   );  //1s
+                                   
+Timer U9(.clk(clk), 
+         .reset(reset), 
+         .mode(mode_out), 
+         .clk100Hz(w_clkout2), 
+         .sw1(sw1), 
+         .sw2(sw2), 
+         .mmsec_out(w_t_mmsec_out), 
+         .sec_out(w_t_sec_out), 
+         .min_out(w_t_min_out)
+         );
+         
+AlarmLogic U10(.clk(clk), 
+               .reset(reset), 
+               .clk1000hz(w_clkout), 
+               .mode(mode_out), 
+               .set_pos(set_pos_out), 
+               .clk_min(min_out), 
+               .clk_hour(hour_out),
+               .sw2(sw2), 
+               .sw3(sw3), 
+               .sec_out(w_a_sec_out), 
+               .min_out(w_a_min_out), 
+               .hour_out(w_a_hour_out), 
+               .alarm_out(alarm_out), 
+               .alarm_on(alarm_on)
+               );
+               
+ClockDevider #(.N(1_000_000)) U11(.clk(clk), 
+                                  .reset(reset), 
+                                  .clk_out(w_clkout2)
+                                  );   //10ms,100Hz
+                                  
+endmodule
+
+
+`timescale 1ns / 1ps
+
+module MasterSelect(
+    input clk,
+    input reset,        // active high
+    input sw0,
+    input sw1,
+    output [1:0] mode_out,
+    output reg [2:0] set_pos_out
+);
+
+//--------------------------------------------------
+// 내부 레지스터
+//--------------------------------------------------
+reg [1:0] mode;
+reg [2:0] set_pos;
+
+//--------------------------------------------------
+// 1. 동기화
+//--------------------------------------------------
+reg [1:0] sw0_sync, sw1_sync;
+always @(posedge clk) begin
+    sw0_sync <= {sw0_sync[0], sw0};
+    sw1_sync <= {sw1_sync[0], sw1};
+end
+
+//--------------------------------------------------
+// 2. 디바운싱
+//--------------------------------------------------
+parameter DEBOUNCE = 20'd200_000; // 약 2ms (100MHz 기준)
+
+reg [19:0] cnt0, cnt1;
+reg sw0_db, sw1_db;
+
+always @(posedge clk or posedge reset) begin
+    if (reset) begin
+        cnt0 <= 0;
+        sw0_db <= 0;
+    end else begin
+        if (sw0_sync[1] != sw0_db) begin
+            if (cnt0 < DEBOUNCE)
+                cnt0 <= cnt0 + 1;
+            else begin
+                sw0_db <= sw0_sync[1];
+                cnt0 <= 0;
+            end
+        end else begin
+            cnt0 <= 0;
+        end
+    end
+end
+
+always @(posedge clk or posedge reset) begin
+    if (reset) begin
+        cnt1 <= 0;
+        sw1_db <= 0;
+    end else begin
+        if (sw1_sync[1] != sw1_db) begin
+            if (cnt1 < DEBOUNCE)
+                cnt1 <= cnt1 + 1;
+            else begin
+                sw1_db <= sw1_sync[1];
+                cnt1 <= 0;
+            end
+        end else begin
+            cnt1 <= 0;
+        end
+    end
+end
+
+//--------------------------------------------------
+// 3. 엣지 검출
+//--------------------------------------------------
+reg sw0_prev, sw1_prev;
+
+wire sw0_rise = sw0_db & ~sw0_prev;
+wire sw1_rise = sw1_db & ~sw1_prev;
+
+always @(posedge clk) begin
+    sw0_prev <= sw0_db;
+    sw1_prev <= sw1_db;
+end
+
+//--------------------------------------------------
+// 4. mode 제어
+//--------------------------------------------------
+always @(posedge clk or posedge reset) begin
+    if (reset)
+        mode <= 2'b00;
+    else if (sw0_rise)
+        mode <= mode + 1'b1;
+end
+
+assign mode_out = mode;
+
+//--------------------------------------------------
+// 5. set_pos 제어
+//--------------------------------------------------
+always @(posedge clk or posedge reset) begin
+    if (reset)
+        set_pos <= 3'b100; // hour
+    else if (sw1_rise && (mode == 2'b01 || mode == 2'b11)) begin
+        case(set_pos)
+            3'b100: set_pos <= 3'b010;
+            3'b010: set_pos <= 3'b001;
+            3'b001: set_pos <= 3'b100;
+            default: set_pos <= 3'b100;
+        endcase
+    end
+end
+
+//--------------------------------------------------
+// 6. 출력
+//--------------------------------------------------
+always @(*) begin
+    case(mode)
+        2'b01, 2'b11: set_pos_out = set_pos;
+        default:      set_pos_out = 3'b000;
+    endcase
+end
+
+endmodule
+
+
+`timescale 1ns / 1ps
+
+module DigitalClock(
+    input clk,
+    input reset,
+    input clk1Hz,         
+    input [1:0] mode,
+    input [2:0] set_pos,
+    input sw2,          
+
+    output [5:0] sec_out,
+    output [5:0] min_out,
+    output [4:0] hour_out
+);
+    reg [1:0] sync;
+    reg [19:0] cnt;
+    reg deb;
+    reg prev;
+    parameter DEBOUNCE = 1_000_000;
+    always @(posedge clk or posedge reset) begin
+        if(reset) begin
+            sync <= 0; cnt <= 0; deb <= 0;
+        end else begin
+            sync <= {sync[0], sw2};
+
+            if(sync[1] != deb) begin
+                if(cnt < DEBOUNCE)
+                    cnt <= cnt + 1;
+                else begin
+                    deb <= sync[1];
+                    cnt <= 0;
+                end
+            end else
+                cnt <= 0;
+        end
+    end
+
+    // edge detect
+    always @(posedge clk or posedge reset) begin
+        if(reset)
+            prev <= 0;
+        else
+            prev <= deb;
+    end
+    wire sw2_pulse = deb & ~prev;   // ? 1클럭 펄스
+    //  enable 생성
+    wire tick_sec  = clk1Hz;                     // 일반 모드
+    wire tick_set  = sw2_pulse;                  // 설정 모드
+
+    wire enable = (mode == 2'b01) ? tick_set : tick_sec;
+    //  시/분/초 카운터 (단일 clk)
+    reg [5:0] sec, min;
+    reg [4:0] hour;
+    
+    always @(posedge clk or posedge reset) begin
+        if(reset) begin
+            sec  <= 0;
+            min  <= 0;
+            hour <= 0;
+        end
+        else if(enable) begin
+            // 설정 모드
+            if(mode == 2'b01) begin
+                case(set_pos)
+                    3'b001: begin // sec
+                        if(sec == 59) sec <= 0;
+                        else sec <= sec + 1;
+                    end
+
+                    3'b010: begin // min
+                        if(min == 59) min <= 0;
+                        else min <= min + 1;
+                    end
+
+                    3'b100: begin // hour
+                        if(hour == 23) hour <= 0;
+                        else hour <= hour + 1;
+                    end
+                endcase
+            end
+            // 일반 모드 (시계 동작)
+             else begin
+                if(sec == 59) begin
+                    sec <= 0;
+
+                    if(min == 59) begin
+                        min <= 0;
+
+                        if(hour == 23)
+                            hour <= 0;
+                        else
+                            hour <= hour + 1;
+                    end
+                    else
+                        min <= min + 1;
+                end
+                else
+                    sec <= sec + 1;
+            end
+        end
+    end
+      // 출력
+    assign sec_out  = sec;
+    assign min_out  = min;
+    assign hour_out = hour;
+endmodule
+
+
+
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+
+// Create Date: 2026/04/16 12:00:54
+// Module Name: FNDDisplay
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module FND_Display(
+    input [1:0] mode,
+    input [5:0] sec_in, min_in, al_min, al_sec, tl_sec, tl_min,
+    input [4:0] hour_in, al_hour,
+    input [6:0] tl_mmsec,
+    output reg [3:0] hour10, hour0,
+    output reg [3:0] min10, min0,
+    output reg [3:0] sec10, sec0
+    );
+    
+    always @(*) begin
+        hour10 = 0; hour0 = 0;
+        min10 = 0;  min0 = 0;
+        sec10 = 0;  sec0 = 0;
+        case(mode)
+            2'b00, 2'b01: begin    //시계 설정 모드
+                hour10 = hour_in / 10;  hour0 = hour_in % 10;
+                min10 = min_in / 10;    min0 = min_in % 10;
+                sec10 = sec_in / 10;    sec0 = sec_in % 10;
+            end
+            2'b10: begin    //타이머 모드
+                hour10 = tl_min / 10;   hour0 = tl_min % 10;
+                min10 = tl_sec / 10;    min0 = tl_sec % 10;
+                sec10 = tl_mmsec / 10;  sec0 = tl_mmsec % 10;
+            end
+            2'b11: begin   //알람 설정 모드
+                hour10 = al_hour / 10;  hour0 = al_hour % 10;
+                min10 = al_min / 10;    min0 = al_min % 10;
+                sec10 = al_sec / 10;    sec0 = al_sec % 10;
+            end
+        endcase
+    end
+endmodule
+
+
+
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+
+// Create Date: 2026/04/16 12:26:24 
+// Module Name: clockdivider_paramN
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module ClockDevider #(parameter N = 100_000)(
+    input clk, reset,
+    output reg clk_out
+    );
+    
+    reg [29:0] cnt;
+    
+    always @(posedge clk or posedge reset) begin
+        if(reset) begin
+            cnt <= 0;
+            clk_out <= 0;
+        end else begin
+            if(cnt == (N-1)) begin
+                cnt <= 0;
+                clk_out <= 1;
+            end else begin
+                cnt <= cnt + 1;
+                clk_out <= 0;
+            end
+        end
+    end
+endmodule
+
+
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+
+// Create Date: 2026/04/16 12:30:09
+// Module Name: counter
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module Counter(
+    input inclk, reset,
+    output reg [1:0] out_counter
+    );
+    
+    always @(posedge inclk, posedge reset) begin
+        if(reset) begin
+            out_counter <= 0; 
+        end else begin
+            out_counter <= out_counter + 1;
+        end
+    end
+endmodule
+
+
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+
+// Create Date: 2026/04/16 12:32:32
+// Module Name: datamux
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module DataMux(
+    input [3:0] ina,inb,inc,ind,ine,inf,
+    input [1:0] insel,
+    input time_mode,
+    output reg[3:0] outy
+    );
+    
+    always @(*) begin
+        if(time_mode == 1'b0) begin
+            case(insel)
+                2'b00: outy = ina;
+                2'b01: outy = inb;
+                2'b10: outy = inc;
+                2'b11: outy = ind;
+            endcase
+        end else begin
+            case(insel)
+                2'b00: outy = inc;
+                2'b01: outy = ind;
+                2'b10: outy = ine;
+                2'b11: outy = inf;
+            endcase
+       end
+    end
+    
+endmodule
+
+
+
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+
+// Create Date: 2026/04/16 12:36:33 
+// Module Name: mux4x1
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module Mux4x1(
+    input [1:0] sel_in,
+    output reg [3:0] fndsel
+    );
+    
+    always @(*) begin
+        case (sel_in)
+            2'b00: fndsel = 4'b1110;
+            2'b01: fndsel = 4'b1101;
+            2'b10: fndsel = 4'b1011;
+            2'b11: fndsel = 4'b0111;
+            default: fndsel = 4'b1111;
+        endcase
+    end
+endmodule
+
+
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+
+// Create Date: 2026/04/16 12:39:54
+// Module Name: FNDdecoder
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module FND_Decoder(
+    input [3:0] fndin,
+    output reg [6:0] fnd
+    );
+    
+    always @(*) begin
+        case(fndin)
+            4'h0: fnd = 7'b0000001;
+            4'h1: fnd = 7'b1001111;
+            4'h2: fnd = 7'b0010010;
+            4'h3: fnd = 7'b0000110;
+            4'h4: fnd = 7'b1001100;
+            4'h5: fnd = 7'b0100100;
+            4'h6: fnd = 7'b0100000;
+            4'h7: fnd = 7'b0001101;
+            4'h8: fnd = 7'b0000000;
+            4'h9: fnd = 7'b0001100;
+            default: fnd = 7'b1111111;
+        endcase
+    end
+    
+endmodule
+
+
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+
+// Create Date: 2026/04/16 12:45:41
+// Module Name: Timer
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module Timer(
+    input clk, reset, clk100Hz, sw1, sw2,
+    input [1:0] mode,
+    output [5:0] sec_out, min_out,
+    output [6:0] mmsec_out
+);
+
+wire run = sw1;
+wire rst = sw2;
+reg [5:0] sec,min;
+reg [6:0] mmsec;
+
+always @(posedge clk or posedge reset) begin
+    if(reset || (mode == 2'b10 && rst)) begin
+        mmsec <= 0;
+        sec <= 0;
+        min <= 0;
+    end
+    else if (mode == 2'b10 && run && clk100Hz) begin
+        if(mmsec == 99) begin
+            mmsec <= 0;
+            if(sec == 59) begin
+                sec <= 0;
+                if(min == 59)
+                    min <= 0;
+                else
+                    min <= min + 1;
+            end 
+            else
+                sec <= sec + 1;
+        end
+        else
+            mmsec <= mmsec + 1;
+    end
+end
+
+assign mmsec_out = mmsec;
+assign sec_out = sec;
+assign min_out = min;
+
+endmodule
+
+
+
+`timescale 1ns / 1ps
+
+module AlarmLogic(
+    input clk,                 // 🔥 추가 (기준 클럭)
+    input reset,
+    input clk1000hz,           // 1ms tick용
+    input [1:0] mode,
+    input [2:0] set_pos,
+    input [5:0] clk_min,
+    input [4:0] clk_hour,
+    input sw2,
+    input sw3,
+
+    output [5:0] sec_out,
+    output [5:0] min_out,
+    output [4:0] hour_out,
+    output reg [2:0] alarm_out,
+    output reg [2:0] alarm_on
+);
+
+//////////////////////////////////////////////////////////////
+// 1. sw2, sw3 동기화 + 엣지 검출 (핵심!)
+//////////////////////////////////////////////////////////////
+reg sw2_d, sw3_d;
+
+always @(posedge clk or posedge reset) begin
+    if(reset) begin
+        sw2_d <= 0;
+        sw3_d <= 0;
+    end else begin
+        sw2_d <= sw2;
+        sw3_d <= sw3;
+    end
+end
+
+wire sw2_pulse = sw2 & ~sw2_d;
+wire sw3_pulse = sw3 & ~sw3_d;
+
+//////////////////////////////////////////////////////////////
+// 2. 알람 ON/OFF
+//////////////////////////////////////////////////////////////
+reg alarm;
+
+always @(posedge clk or posedge reset) begin
+    if(reset) begin
+        alarm <= 0;
+        alarm_on <= 3'b000;
+    end
+    else if(sw3_pulse) begin
+        alarm <= ~alarm;
+        alarm_on <= alarm ? 3'b000 : 3'b111;
+    end
+end
+
+//////////////////////////////////////////////////////////////
+// 3. 알람 시간 설정
+//////////////////////////////////////////////////////////////
+reg [5:0] sec, min;
+reg [4:0] hour;
+
+always @(posedge clk or posedge reset) begin
+    if(reset) begin
+        sec  <= 0;
+        min  <= 0;
+        hour <= 0;
+    end
+    else if(mode == 2'b11 && sw2_pulse) begin
+        case(set_pos)
+            3'b001: sec  <= (sec  == 59) ? 0 : sec  + 1;
+            3'b010: min  <= (min  == 59) ? 0 : min  + 1;
+            3'b100: hour <= (hour == 23) ? 0 : hour + 1;
+        endcase
+    end
+end
+
+assign sec_out  = sec;
+assign min_out  = min;
+assign hour_out = hour;
+
+//////////////////////////////////////////////////////////////
+// 4. 알람 비교 (1000Hz 기준)
+//////////////////////////////////////////////////////////////
+always @(posedge clk1000hz or posedge reset) begin
+    if(reset)
+        alarm_out <= 3'b000;
+    else if((hour == clk_hour) && (min == clk_min) && alarm && (mode != 2'b11))
+        alarm_out <= 3'b111;
+    else
+        alarm_out <= 3'b000;
+end
+
+endmodule

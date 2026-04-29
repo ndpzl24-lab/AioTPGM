@@ -1,0 +1,22 @@
+* source SS
+V_V1         VCC 0 5v
+L_L1         VCC IC_VCC  10nH  
+U_DSTM1         STIM(1,1) $G_DPWR $G_DGND N01131 IO_STM IO_LEVEL=0 
++ 0 0
++ +.5uS 1
++REPEAT FOREVER
++ +.5uS 0
++  +.5uS 1
++ ENDREPEAT
+X_S1    N01131 IC_GND N01124 IC_GND SCHEMATIC1_S1 
+C_C1         N01124 IC_GND  0.1n  TC=0,0 
+L_L2         0 IC_GND  1nH  
+R_R1         IC_VCC N01124  100 TC=0,0 
+R_R2         IC_VCC N01654  10m TC=0,0 
+L_L3         N01654 N01685  0.2n  
+C_C2         N01685 0  4.7u  TC=0,0 
+
+.subckt SCHEMATIC1_S1 1 2 3 4  
+S_S1         3 4 1 2 Sbreak
+RS_S1         1 2 1G
+.ends SCHEMATIC1_S1

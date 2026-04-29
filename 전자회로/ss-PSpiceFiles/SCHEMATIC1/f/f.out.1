@@ -1,0 +1,100 @@
+
+**** 03/04/26 11:44:01 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-f"  [ D:\ORCAD\SPICE\ss-PSpiceFiles\SCHEMATIC1\f.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "f.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.TRAN  0 10ns 5 10 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source SS
+V_V1         N00098 0 DC 0Vdc AC 1Vac 
+L_L1         N00098 N00105  {L}  
+C_C1         N00105 0  {C}  TC=0,0 
+.PARAM  l=0.1uh c=0.1uf
+
+**** RESUMING f.cir ****
+.END
+
+ERROR(ORPSIM-15413): Transient Stop time 1e-008 s is less than Print Start time 5 s.
+
+
+ABORTING SIMULATION
+**** 03/04/26 11:44:01 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-f"  [ D:\ORCAD\SPICE\ss-PSpiceFiles\SCHEMATIC1\f.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+Node counts:
+  Top level (NUNODS)                =           3
+  External (NCNODS)                 =           3
+  Total (NUMNOD)                    =           3
+
+Total device count (NUMEL)          =           4
+  Capacitors (C)                    =           1
+  Inductors (L)                     =           1
+  Voltage Sources (V)               =           1
+
+Number of subcircuits (X)           =           0
+
+Matrix statistics:
+  Matrix size (NSTOP)               =           5
+  Initial no. elements (NTTAR)      =           9
+  No. elements w/ fillin (NTTBR)    =           9
+  No. fillins (IFILL)               =           0
+  No. overflows (NTTOV)             =           0
+  No. LU operations (IOPS)          =           0
+  Percent sparsity (PERSPA)         =      64.000
+
+Analysis statistics:
+  No. total time points (NUMTTP)    =           0
+  No. rejected time points (NUMRTP) =           0
+  No. iterations (NUMNIT)           =           0
+
+Load Threads                        =           1
+
+Runtime statistics:                       Seconds      Iterations
+  Matrix load                       =        0.00
+  Matrix solution                   =        0.00               1
+  Readin                            =         .02
+  General setup                     =        0.00
+  CMI setup                     =        0.00
+  Setup                             =        0.00
+  DC sweep                          =        0.00               0
+  Bias point                        =        0.00               0
+  AC and noise                      =        0.00               0
+  Total transient analysis          =        0.00
+  Output                            =        0.00
+  Overhead                          =        0.00
+  Total job time (using Solver 1)   =         .38
+

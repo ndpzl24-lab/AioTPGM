@@ -1,0 +1,20 @@
+* source 20260306 2
+L_L1         N00143 N00150  47mH  
+R_R1         N00150 N00183  270 TC=0,0 
+V_V1         N00143 0 12V
+X_U1         N00183 0 Sw_tOpen PARAMS: tOpen=1ms ttran=1u Rclosed=0.01
++  Ropen=1Meg
+X_U2         N00591 0 Sw_tOpen PARAMS: tOpen=1ms ttran=1u Rclosed=0.01
++  Ropen=1Meg
+L_L2         N00575 N00585  47mH  
+R_R2         N00585 N00591  270 TC=0,0 
+V_V2         N00575 0 12V
+D_D1         N00591 N00575 D1N4148 
+L_L3         N00968 N00978  47mH  
+X_U3         N00984 0 Sw_tOpen PARAMS: tOpen=1ms ttran=1u Rclosed=0.01
++  Ropen=1Meg
+V_V3         N00968 0 12V
+R_R3         N00978 N00984  270 TC=0,0 
+R_R4         N00968 N01145  270 TC=0,0 
+C_C1         N01145 N00984  {C}  TC=0,0 
+.PARAM  c=0.6u

@@ -1,0 +1,2 @@
+sdpram3.v,verilog,xil_defaultlib,../../../../Create_memory_sdpram.gen/sources_1/ip/sdpram3/sim/sdpram3.v,incdir="../../../../../../../../AMDDesignTools/2025.2.1/Vivado/data/rsb/busdef"
+glbl.v,Verilog,xil_defaultlib,glbl.v

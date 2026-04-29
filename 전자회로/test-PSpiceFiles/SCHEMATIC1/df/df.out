@@ -1,0 +1,61 @@
+
+**** 01/30/26 13:00:09 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-df"  [ d:\orcad\spice\test-PSpiceFiles\SCHEMATIC1\df.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "df.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.OP
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source TEST
+V_V1         N00258 0 6V
+R_R1         N00258 A  1k TC=0,0 
+R_R2         A C  1k TC=0,0 
+R_R3         0 C  1k TC=0,0 
+R_R4         A B  1k TC=0,0 
+R_R5         0 B  3k TC=0,0 
+R_R6         B 0  3k TC=0,0 
+R_R7         B 0  3k TC=0,0 
+V_V2         N01855 0 6Vdc
+R_R8         N01855 N01878  1k TC=0,0 
+R_R9         0 N01869  1k TC=0,0 
+R_R10         N01878 N01869  2k TC=0,0 
+R_R11         N01878 A_1833  1k TC=0,0 
+R_R12         N01869 B  1k TC=0,0 
+R_R13           A B  1m TC=0,0 
+V_VTH         N02770 0 3V
+R_RTH         N02770 N02786  3k TC=0,0 
+I_IN         0 N02882 DC 1mA  
+R_RN         0 N02882  3k TC=0,0 
+R_R14         N02786 0  {R} TC=0,0 
+R_R15         N02882 0  {R} TC=0,0 
+.PARAM  r=1k
+
+**** RESUMING df.cir ****
+.END
+
+ERROR(ORPSIM-15141): Less than 2 connections at node A_1833.
+

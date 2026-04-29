@@ -1,0 +1,227 @@
+/*
+ * Timer4.c
+ *
+ * Created: 2026-04-13 ¿ÀÀü 10:31:12
+ * Author: ¼º¹Î
+ */
+
+#include <mega128.h>
+#include <delay.h>
+
+unsigned char led = 0xFF;
+unsigned char cnt = 0;
+unsigned char cnt2 = 0;
+unsigned char timer_int0_cnt = 0;
+unsigned char timer_int2_cnt = 0;
+unsigned char timer_int3C_cnt = 0;
+unsigned char timer_int4C_cnt = 0;
+unsigned int pwm = 0x0200;
+
+const unsigned char seg_pat[16] = {0x3f, 0x06, 0x5b, 0x4f, 0x66, 0x6d, 0x7d, 0x07, 0x7f, 0x6f, 0x77, 0x7c, 0x39, 0x5e, 0x79, 0x71};
+
+void  Seg4_out(unsigned int);
+
+void main(void)
+{
+    DDRB = 0xFF;
+    DDRD = 0xF0;
+    DDRG = 0xFF;
+    DDRC = 0xFF;
+    PORTC = led;
+    
+    EIMSK = 0xF0;   // 0b1111_0000
+    EICRB = 0xAA;   //0b1010_1010 -> falling edge
+    
+    SREG |= 0x80;
+
+    while(1){
+        if(timer_int0_cnt == 1){
+            timer_int0_cnt = 0;
+
+            cnt++;
+    
+            if(cnt >= 25){ 
+                led = led^0x0F;    
+                PORTC = led;
+                cnt = 0;
+            }   /* end of if */
+        }   /* end of if */
+        
+        if(timer_int2_cnt == 1){
+            timer_int2_cnt = 0;
+            
+            cnt2++;
+    
+            if(cnt2 >= 25){ 
+                led = led^0xF0;    
+                PORTC = led;
+                cnt2 = 0;
+            }   /* end of if */
+        }   /* end of if */
+    
+        if(timer_int3C_cnt == 1){
+            timer_int3C_cnt = 0;
+            led <<= 1;
+            led |= 0x01;
+            if(led == 0xFF) led = 0xFE;
+            PORTC = led;
+        }   /* end of if */
+        
+        if(timer_int4C_cnt == 1){        
+            Seg4_out(pwm);
+        }   /* end of if */
+    }   /* end of while */
+}   /* end of main */
+
+///////////////// timer interrupt /////////////////////////
+interrupt [TIM0_OVF] void timer_int0(void)
+{
+    SREG &= 0x7F;
+
+    TCNT0 = 0x06; 
+    
+    timer_int0_cnt = 1;
+    
+    SREG |= 0x80;
+}
+
+interrupt [TIM2_COMP] void timer_int2(void)
+{   
+    SREG &= 0x7F;
+    
+    TCNT2 = 0;
+    
+    timer_int2_cnt = 1;
+      
+    SREG |= 0x80;
+}
+
+interrupt [TIM3_COMPC] void timer_int3_C(void)
+{   
+    SREG &= 0x7F;
+    
+    TCNT3H = 0x00;
+    TCNT3L = 0x00; 
+     
+    timer_int3C_cnt = 1;  
+      
+    SREG |= 0x80;
+}
+
+///////////////// external interrupt /////////////////////////
+interrupt [EXT_INT4] void external_int4(void)   // pwm control & timer0 on
+{
+    if(timer_int4C_cnt == 1){
+        if(pwm < 0x03B0) pwm += 0x0040;
+        OCR1CH = (pwm & 0xFF00) >> 8;
+        OCR1CL = pwm & 0x00FF; 
+    }   /* end of if */
+    else{
+        TIMSK |= 0x01;
+        TIMSK &= 0x7F;
+        ETIMSK &= 0xFD;
+        TCCR0 = 0x06;   // pre scale=256
+        TCNT0 = 0x06;   // 4ms
+        
+        led = 0xF5;
+//        cnt = 0;
+    }   /* end of else */     
+}
+
+interrupt [EXT_INT5] void external_int5(void)   // pwm control & timer2 on
+{
+    if(timer_int4C_cnt == 1){
+        if(pwm > 0x0050) pwm -= 0x0040;
+        OCR1CH = (pwm & 0xFF00) >> 8;
+        OCR1CL = pwm & 0x00FF; 
+    }   /* end of if */
+    else{
+        TIMSK |= 0x80;   // TCCR0ÀÇ ºÐÁÖºñ¸¦ 000 => timer0 ¸ØÃç
+        TIMSK &= 0xFE;
+        TCCR0 = 0x00;   // TCCR0ÀÇ ºÐÁÖºñ¸¦ 000 => timer0 ¸ØÃç
+        ETIMSK &= 0xFD;
+        TCCR2 = 0x0D;   // pre scale=1024
+        TCNT2 = 0;   // 8ms  
+        OCR2 = 0x7C;
+        led = 0x5F;
+ //       cnt2 = 0;
+    }   /* end of else */ 
+}
+
+interrupt [EXT_INT6] void external_int6(void)   // timer1 off & timer3 on
+{
+    if(timer_int4C_cnt == 1){
+        timer_int4C_cnt = 0;
+    }   /* end of if */
+    else{
+        TIMSK &= 0x7E;
+        
+        ETIMSK |= 0x02;
+        TCCR0 = 0x00;
+        TCCR2 = 0x00;
+        //TCCR3B = 0x00;
+        TCCR3A = 0x00;
+        TCCR3B = 0x0C;  // CTC, pre scale=256
+        TCCR3C = 0x00;
+        
+        TCNT3H = 0x00;
+        TCNT3L = 0x00;    
+        
+        OCR3CH = 0x92;
+        OCR3CL = 0x7B;     
+        
+        led = 0xFE;
+    }   /* end of else */ 
+}
+
+interrupt [EXT_INT7] void external_int7(void)   // timer1 on
+{
+    TIMSK &= 0x7E;
+    ETIMSK &= 0xFD;
+    
+    PORTG = 0x0E;
+    
+    TCCR1A = 0b00001011;
+    TCCR1B = 0b00000100;
+    TCCR1C = 0x00;
+    TCNT1 = 0x00;
+    
+    OCR1CH = (pwm & 0xFF00) >> 8;
+    OCR1CL = pwm & 0x00FF;
+    
+    timer_int4C_cnt = 1;
+    PORTC = 0xFF;
+}
+
+///////////////// function /////////////////////////
+void Seg4_out(unsigned int num)
+{                   
+    int N1000, N100, N10, N1, buf;
+    
+    N1000 = num / 0x1000;             
+    buf = num % 0x1000;
+    N100 = buf / 0x100;               
+    buf = buf % 0x100;          
+    N10 = buf / 0x10;                
+    N1 = buf % 0x10;                  
+    
+    PORTG = 0b00001000;        
+    PORTD = ((seg_pat[N1] & 0x0F) << 4) | (PORTD & 0x0F);        
+    PORTB = (seg_pat[N1] & 0x70 ) | (PORTB & 0x0F);             
+    delay_ms(1);
+       
+    PORTG = 0b00000100;
+    PORTD = ((seg_pat[N10] & 0x0F) << 4) | (PORTD & 0x0F);       
+    PORTB = (seg_pat[N10] & 0x70 ) | (PORTB & 0x0F);              
+    delay_ms(1);
+        
+    PORTG = 0b00000010;        
+    PORTD = ((seg_pat[N100] & 0x0F) << 4) | (PORTD & 0x0F);       
+    PORTB = (seg_pat[N100] & 0x70 ) | (PORTB & 0x0F);              
+    delay_ms(1);
+        
+    PORTG = 0b00000001;     
+    PORTD = ((seg_pat[N1000] & 0x0F) << 4) | (PORTD & 0x0F);        
+    PORTB = (seg_pat[N1000] & 0x70 ) | (PORTB & 0x0F);             
+    delay_ms(1);
+}

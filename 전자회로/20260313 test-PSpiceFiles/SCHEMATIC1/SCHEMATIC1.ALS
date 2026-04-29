@@ -1,0 +1,10 @@
+.ALIASES
+U_DSTM3          DSTM3(VCC=$G_DPWR GND=$G_DGND 1=IN ) CN @20260313 TEST.SCHEMATIC1(sch_1):INS7776@SOURCE.DigClock.Normal(chips)
+R_R11           R11(1=IN 2=N08098 ) CN @20260313 TEST.SCHEMATIC1(sch_1):INS7810@ANALOG.R.Normal(chips)
+M_M1            M1(drain=OUT gate=N08098 source=N07450 source=N07450 ) CN @20260313
++TEST.SCHEMATIC1(sch_1):INS7420@EVAL.IRF9140.Normal(chips)
+M_M2            M2(drain=OUT gate=N08098 source=0 source=0 ) CN @20260313 TEST.SCHEMATIC1(sch_1):INS7748@EVAL.IRF150.Normal(chips)
+V_V1            V1(+=N07450 -=0 ) CN @20260313 TEST.SCHEMATIC1(sch_1):INS7500@SOURCE.VDC.Normal(chips)
+_    _(in=IN)
+_    _(OUT=OUT)
+.ENDALIASES

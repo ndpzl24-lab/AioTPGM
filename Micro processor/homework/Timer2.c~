@@ -1,0 +1,17 @@
+/*
+ * Timer2.c
+ *
+ * Created: 2026-04-11 ¿ÀÈÄ 6:11:43
+ * Author: ¼º¹Î
+ */
+
+#include <mega128.h>
+
+void main(void)
+{
+while (1)
+    {
+    // Please write your application code here
+
+    }
+}

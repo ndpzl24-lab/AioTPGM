@@ -1,0 +1,159 @@
+
+**** 03/16/26 14:35:46 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-af"  [ D:\ORCAD\SPICE\20260316 2-PSpiceFiles\SCHEMATIC1\af.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "af.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+.LIB "../../../mydevice.lib" 
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nomd.lib" 
+
+*Analysis directives: 
+.TRAN  0 5m 0 1u 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source 20260316 2
+X_U2C         REF N04282 VCC 0 N04292 TLC07X_5V
+C_C1         N04394 N04406  1u  TC=0,0 
+C_C2         N04292 N04444  1u  TC=0,0 
+R_R10         N04282 N04292  2K TC=0,0 
+R_R12         N04444 0  10K TC=0,0 
+V_V5         N04394 0  
++SIN 0V 1V 1kHz 0 0 0
+R_R11         N04406 N04282  1k TC=0,0 
+R_R18         REF 0  10k TC=0,0 
+C_C6         REF 0  1n  TC=0,0 
+V_V3         VCC 0 12V
+V_V2         VEE 0 -12V
+R_R17         VCC REF  10k TC=0,0 
+
+**** RESUMING af.cir ****
+.END
+
+**** 03/16/26 14:35:46 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-af"  [ D:\ORCAD\SPICE\20260316 2-PSpiceFiles\SCHEMATIC1\af.sim ] 
+
+
+ ****     Diode MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U2C.dx        X_U2C.dy        
+          IS  800.000000E-18  800.000000E-18 
+          RS                    1.000000E-03 
+         CJO                   10.000000E-12 
+
+
+**** 03/16/26 14:35:46 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-af"  [ D:\ORCAD\SPICE\20260316 2-PSpiceFiles\SCHEMATIC1\af.sim ] 
+
+
+ ****     Junction FET MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U2C.jx1       X_U2C.jx2       
+               PJF             PJF             
+         VTO   -1              -1            
+        BETA    1.139100E-03    1.139100E-03 
+          IS  117.500000E-15  117.500000E-15 
+
+
+**** 03/16/26 14:35:46 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-af"  [ D:\ORCAD\SPICE\20260316 2-PSpiceFiles\SCHEMATIC1\af.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  REF)    6.0000  (  VCC)   12.0000  (  VEE)  -12.0000  (N04282)    6.0000     
+
+(N04292)    6.0000 (N04394)    0.0000 (N04406)    6.0000 (N04444)    0.0000     
+
+(X_U2C.6)-4.609E-09                   (X_U2C.7)    6.0000                       
+
+(X_U2C.8)    6.0000                   (X_U2C.9)    0.0000                       
+
+(X_U2C.10)    5.2844                  (X_U2C.11)     .2015                      
+
+(X_U2C.12)     .2015                  (X_U2C.53)   10.4590                      
+
+(X_U2C.54)     .8440                  (X_U2C.90) 8.472E-09                      
+
+(X_U2C.91)  119.0000                  (X_U2C.92) -119.0000                      
+
+(X_U2C.99)    6.0000                  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V5         0.000E+00
+    V_V3        -5.636E-03
+    V_V2         0.000E+00
+    X_U2C.vb    -4.609E-14
+    X_U2C.vc     4.460E-12
+    X_U2C.ve     5.041E-12
+    X_U2C.vlim   8.472E-12
+    X_U2C.vlp   -1.190E-10
+    X_U2C.vln   -1.190E-10
+
+    TOTAL POWER DISSIPATION   6.76E-02  WATTS
+
+
+
+          JOB CONCLUDED
+
+**** 03/16/26 14:35:46 ******* PSpice Lite (March 2016) ******* ID# 10813 ****
+
+ ** Profile: "SCHEMATIC1-af"  [ D:\ORCAD\SPICE\20260316 2-PSpiceFiles\SCHEMATIC1\af.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =         .66
+

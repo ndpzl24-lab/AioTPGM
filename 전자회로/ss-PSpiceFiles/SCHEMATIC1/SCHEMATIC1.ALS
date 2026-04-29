@@ -1,0 +1,15 @@
+.ALIASES
+V_V1            V1(+=VCC -=0 ) CN @SS.SCHEMATIC1(sch_1):INS902@SOURCE.VDC.Normal(chips)
+L_L1            L1(1=VCC 2=IC_VCC ) CN @SS.SCHEMATIC1(sch_1):INS927@ANALOG.L.Normal(chips)
+U_DSTM1          DSTM1(VCC=$G_DPWR GND=$G_DGND 1=N01131 ) CN @SS.SCHEMATIC1(sch_1):INS962@SOURCE.DigClock.Normal(chips)
+X_S1    S1(1=N01131 2=IC_GND 3=N01124 4=IC_GND ) CN @SS.SCHEMATIC1(sch_1):INS1013@BREAKOUT.Sbreak.Normal(chips)
+C_C1            C1(1=N01124 2=IC_GND ) CN @SS.SCHEMATIC1(sch_1):INS1042@ANALOG.C.Normal(chips)
+L_L2            L2(1=0 2=IC_GND ) CN @SS.SCHEMATIC1(sch_1):INS1067@ANALOG.L.Normal(chips)
+R_R1            R1(1=IC_VCC 2=N01124 ) CN @SS.SCHEMATIC1(sch_1):INS1103@ANALOG.R.Normal(chips)
+R_R2            R2(1=IC_VCC 2=N01654 ) CN @SS.SCHEMATIC1(sch_1):INS1631@ANALOG.R.Normal(chips)
+L_L3            L3(1=N01654 2=N01685 ) CN @SS.SCHEMATIC1(sch_1):INS1667@ANALOG.L.Normal(chips)
+C_C2            C2(1=N01685 2=0 ) CN @SS.SCHEMATIC1(sch_1):INS1698@ANALOG.C.Normal(chips)
+_    _(IC_GND=IC_GND)
+_    _(IC_VCC=IC_VCC)
+_    _(VCC=VCC)
+.ENDALIASES

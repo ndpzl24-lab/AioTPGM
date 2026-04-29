@@ -1,0 +1,7 @@
+verilog xil_defaultlib -i "../../../../../../../../AMDDesignTools/2025.2.1/Vivado/data/rsb/busdef" \
+"../../../../Create_memory_sdpram.gen/sources_1/ip/sdpram1/sim/sdpram1.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
